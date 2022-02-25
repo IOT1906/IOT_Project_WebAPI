@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\IOT_Project_IRepository\IOT_Project_IRepository.csproj" />
+    <ProjectReference Include="..\IOT_Project_IServices\IOT_Project_IServices.csproj" />
     <ProjectReference Include="..\IOT_Project_MyDB\IOT_Project_MyDB.csproj" />
     <ProjectReference Include="..\IOT_Project_Repository\IOT_Project_Repository.csproj" />
   </ItemGroup>
