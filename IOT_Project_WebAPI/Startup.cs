@@ -34,6 +34,7 @@ namespace IOT_Project_WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             //EFÇ¨ÒÆÊý¾Ý¿â¡ª¡ª¡ª¡ª×¢ÒâBPMMyUsersµÄ²»Ó³Éä
             var con = Configuration.GetConnectionString("con");
             services.AddDbContext<MyDbContext>(option => option.UseSqlServer(con));
@@ -42,6 +43,21 @@ namespace IOT_Project_WebAPI
             //×¢ÈëÄê¶È¼Æ»®·þÎñ²ã
             services.AddScoped<Annual_PlanIServices, Annual_PlanServices>();
             //¿çÓò
+            //EFÇ¨ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿â¡ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½BPMMyUsersï¿½Ä²ï¿½Ó³ï¿½ï¿½
+      
+            services.AddDbContext<MyDbContext>(option => option.UseSqlServer(con));
+            //×¢ï¿½ï¿½Ö´ï¿½ï¿½ï¿?
+
+            //EFÇ¨ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿â¡ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½BPMMyUsersï¿½Ä²ï¿½Ó³ï¿½ï¿½
+        
+            services.AddDbContext<MyDbContext>(option => option.UseSqlServer(con));
+            //×¢ï¿½ï¿½Ö´ï¿½ï¿½ï¿?
+
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
+
+            //ï¿½ï¿½ï¿½ï¿½
+
             services.AddCors(s =>
             {
                 s.AddPolicy("ljq", s =>
@@ -113,9 +129,19 @@ namespace IOT_Project_WebAPI
 
             app.UseRouting();
 
+
             //ÈÏÖ¤
             app.UseAuthentication();
             //ÊÚÈ¨
+
+            //ï¿½ï¿½Ö¤
+            app.UseAuthentication();
+            //ï¿½ï¿½È¨
+
+            //ï¿½ï¿½Ö¤
+            app.UseAuthentication();
+            //ï¿½ï¿½È¨
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
