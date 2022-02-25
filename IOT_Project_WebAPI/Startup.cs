@@ -32,14 +32,14 @@ namespace IOT_Project_WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //EFÇ¨ÒÆÊý¾Ý¿â¡ª¡ª¡ª¡ª×¢ÒâBPMMyUsersµÄ²»Ó³Éä
+            //EFÇ¨ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿â¡ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½BPMMyUsersï¿½Ä²ï¿½Ó³ï¿½ï¿½
             var con = Configuration.GetConnectionString("con");
             services.AddDbContext<MyDbContext>(option => option.UseSqlServer(con));
-            //×¢Èë²Ö´¢²ã
+            //×¢ï¿½ï¿½Ö´ï¿½ï¿½ï¿½
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
 
-            //¿çÓò
+            //ï¿½ï¿½ï¿½ï¿½
             services.AddCors(s =>
             {
                 s.AddPolicy("ljq", s =>
@@ -71,26 +71,26 @@ namespace IOT_Project_WebAPI
                 });
 
             });
-            ///ÈÏÖ¤·þÎñ´úÂë
+            ///ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(o =>
             {
-                //ÕâÒ»Ûç¾ÍÊÇ¾ÍÊÇpayload
+                //ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½payload
                 o.TokenValidationParameters = new TokenValidationParameters
                 {
-                    // ÊÇ·ñ¿ªÆôÇ©ÃûÈÏÖ¤
+                    // ï¿½Ç·ï¿½ï¿½ï¿½Ç©ï¿½ï¿½ï¿½ï¿½Ö¤
                     ValidateIssuerSigningKey = true,
 
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration.GetSection("secretKey").Value)),
-                    // ·¢ÐÐÈËÑéÖ¤£¬ÕâÀïÒªºÍtokenÀàÖÐClaimÀàÐÍµÄ·¢ÐÐÈË±£³ÖÒ»ÖÂ
+                    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½tokenï¿½ï¿½ï¿½ï¿½Claimï¿½ï¿½ï¿½ÍµÄ·ï¿½ï¿½ï¿½ï¿½Ë±ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
                     ValidateIssuer = true,
-                    ValidIssuer = "API",//·¢ÐÐÈË
-                    // ½ÓÊÕÈËÑéÖ¤
+                    ValidIssuer = "API",//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤
                     ValidateAudience = true,
-                    ValidAudience = "User",//¶©ÔÄÈË
+                    ValidAudience = "User",//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                     ValidateLifetime = true,
                     ClockSkew = TimeSpan.Zero,
                 };
@@ -106,14 +106,14 @@ namespace IOT_Project_WebAPI
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "IOT_Project_WebAPI v1"));
             }
-            //¿çÓòÉèÖÃ
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             app.UseCors("ljq");
 
             app.UseRouting();
 
-            //ÈÏÖ¤
+            //ï¿½ï¿½Ö¤
             app.UseAuthentication();
-            //ÊÚÈ¨
+            //ï¿½ï¿½È¨
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
