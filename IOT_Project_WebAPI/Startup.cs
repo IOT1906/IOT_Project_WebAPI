@@ -1,6 +1,8 @@
 using IOT_Project_IRepository;
+using IOT_Project_IServices;
 using IOT_Project_MyDB;
 using IOT_Project_Repository;
+using IOT_Project_Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -37,7 +39,8 @@ namespace IOT_Project_WebAPI
             services.AddDbContext<MyDbContext>(option => option.UseSqlServer(con));
             //×¢Èë²Ö´¢²ã
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-
+            //×¢ÈëÇë¼Ù·þÎñ²ã
+            services.AddScoped<LeaveIservices, LeaveServices>();
 
             //¿çÓò
             services.AddCors(s =>
