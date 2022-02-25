@@ -1,6 +1,8 @@
 using IOT_Project_IRepository;
+using IOT_Project_IServices;
 using IOT_Project_MyDB;
 using IOT_Project_Repository;
+using IOT_Project_Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -37,6 +39,8 @@ namespace IOT_Project_WebAPI
             services.AddDbContext<MyDbContext>(option => option.UseSqlServer(con));
             //注入仓储层
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            //注入离职服务
+            services.AddScoped<DepartureIServices, DepartureServices>();
 
 
             //跨域

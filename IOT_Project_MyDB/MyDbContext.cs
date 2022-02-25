@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using IOT_Priject_Domin.Model;
+using Microsoft.EntityFrameworkCore;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,10 @@ namespace IOT_Project_MyDB
         { 
         }
         public DbSet<BPMSysUsers> BPMSysUsers { get; set; }
+        /// <summary>
+        /// 离职表
+        /// </summary>
+        public DbSet<Departure> Departure { get; set; }
 
     }
 }

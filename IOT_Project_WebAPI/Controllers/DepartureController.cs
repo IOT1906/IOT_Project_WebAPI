@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using IOT_Priject_Domin.Model;
+using IOT_Project_IServices;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -13,5 +15,23 @@ namespace IOT_Project_WebAPI.Controllers
     [ApiController]
     public class DepartureController : ControllerBase
     {
+        private readonly DepartureIServices _sql;
+
+        public DepartureController(DepartureIServices sql)
+        {
+            _sql = sql;
+        }
+        /// <summary>
+        /// 离职提交方法
+        /// </summary>
+        /// <param name="departure"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("api/DepAdd")]
+        public IActionResult DepAdd(Departure departure)
+        {
+            var list = _sql.DepAdd(departure);
+            return Ok(list);
+        }
     }
 }
