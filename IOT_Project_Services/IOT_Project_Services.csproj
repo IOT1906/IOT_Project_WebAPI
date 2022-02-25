@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\IOT_Priject_Domin\IOT_Priject_Domin.csproj" />
+    <ProjectReference Include="..\IOT_Project_IRepository\IOT_Project_IRepository.csproj" />
+    <ProjectReference Include="..\IOT_Project_IServices\IOT_Project_IServices.csproj" />
+  </ItemGroup>
+
+</Project>
