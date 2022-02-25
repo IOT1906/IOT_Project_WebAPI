@@ -32,7 +32,7 @@ namespace IOT_Project_WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-<<<<<<< HEAD
+
             //EFÇ¨ÒÆÊý¾Ý¿â¡ª¡ª¡ª¡ª×¢ÒâBPMMyUsersµÄ²»Ó³Éä
             var con = Configuration.GetConnectionString("con");
             services.AddDbContext<MyDbContext>(option => option.UseSqlServer(con));
@@ -41,16 +41,21 @@ namespace IOT_Project_WebAPI
 
 
             //¿çÓò
-=======
             //EFÇ¨ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿â¡ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½BPMMyUsersï¿½Ä²ï¿½Ó³ï¿½ï¿½
-            var con = Configuration.GetConnectionString("con");
+      
             services.AddDbContext<MyDbContext>(option => option.UseSqlServer(con));
             //×¢ï¿½ï¿½Ö´ï¿½ï¿½ï¿?
+
+            //EFÇ¨ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿â¡ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½BPMMyUsersï¿½Ä²ï¿½Ó³ï¿½ï¿½
+        
+            services.AddDbContext<MyDbContext>(option => option.UseSqlServer(con));
+            //×¢ï¿½ï¿½Ö´ï¿½ï¿½ï¿?
+
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
 
             //ï¿½ï¿½ï¿½ï¿½
->>>>>>> 29662c7412428be828ebdcaf284c57805475829b
+
             services.AddCors(s =>
             {
                 s.AddPolicy("ljq", s =>
@@ -82,18 +87,13 @@ namespace IOT_Project_WebAPI
                 });
 
             });
-<<<<<<< HEAD
-            ///ÈÏÖ¤·þÎñ´úÂë
-=======
-            ///ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿?
->>>>>>> 29662c7412428be828ebdcaf284c57805475829b
+
             services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(o =>
             {
-<<<<<<< HEAD
                 //ÕâÒ»Ûç¾ÍÊÇ¾ÍÊÇpayload
                 o.TokenValidationParameters = new TokenValidationParameters
                 {
@@ -107,21 +107,6 @@ namespace IOT_Project_WebAPI
                     // ½ÓÊÕÈËÑéÖ¤
                     ValidateAudience = true,
                     ValidAudience = "User",//¶©ÔÄÈË
-=======
-                //ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½payload
-                o.TokenValidationParameters = new TokenValidationParameters
-                {
-                    // ï¿½Ç·ï¿½ï¿½ï¿½Ç©ï¿½ï¿½ï¿½ï¿½Ö¤
-                    ValidateIssuerSigningKey = true,
-
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration.GetSection("secretKey").Value)),
-                    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½tokenï¿½ï¿½ï¿½ï¿½Claimï¿½ï¿½ï¿½ÍµÄ·ï¿½ï¿½ï¿½ï¿½Ë±ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
-                    ValidateIssuer = true,
-                    ValidIssuer = "API",//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-                    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤
-                    ValidateAudience = true,
-                    ValidAudience = "User",//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
->>>>>>> 29662c7412428be828ebdcaf284c57805475829b
                     ValidateLifetime = true,
                     ClockSkew = TimeSpan.Zero,
                 };
@@ -137,24 +122,24 @@ namespace IOT_Project_WebAPI
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "IOT_Project_WebAPI v1"));
             }
-<<<<<<< HEAD
-            //¿çÓòÉèÖÃ
-=======
-            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
->>>>>>> 29662c7412428be828ebdcaf284c57805475829b
+
             app.UseCors("ljq");
 
             app.UseRouting();
 
-<<<<<<< HEAD
+
             //ÈÏÖ¤
             app.UseAuthentication();
             //ÊÚÈ¨
-=======
+
             //ï¿½ï¿½Ö¤
             app.UseAuthentication();
             //ï¿½ï¿½È¨
->>>>>>> 29662c7412428be828ebdcaf284c57805475829b
+
+            //ï¿½ï¿½Ö¤
+            app.UseAuthentication();
+            //ï¿½ï¿½È¨
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
