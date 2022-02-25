@@ -35,6 +35,10 @@ namespace IOT_Project_MyDB
         /// 用户亲属表
         /// </summary>
         public DbSet<userkinsfolk> userkinsfolk { get; set; }
+        /// <summary>
+        /// 人力资源申请表
+        /// </summary>
+        public DbSet<ResourcesRequirements> ResourcesRequirements { get; set; }
 
     }
 }
