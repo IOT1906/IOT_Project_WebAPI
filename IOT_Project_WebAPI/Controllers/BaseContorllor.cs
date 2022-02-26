@@ -1,5 +1,7 @@
 ﻿using BPMAPI.OtherApi;
 using bpmdemoapi.models;
+using IOT_Priject_Domin.Model;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -15,6 +17,18 @@ namespace WebApplication21.Controllers
         public BaseController(IConfiguration configuration)
         {
             this.configuration = configuration;
+        }
+
+        /// <summary>
+        /// 发起人力资源
+        /// </summary>
+        /// <param name="ResourcesRequirements"></param>
+        [HttpPost, Route("api/Add")]
+        public void Add([FromBody]ResourcesRequirements resourcesRequirements)
+        {
+             StartProccess<ResourcesRequirements>(resourcesRequirements);
+
+          
         }
         /// <summary>
         /// 获取table

@@ -40,7 +40,7 @@ namespace IOT_Project_MyDB
         public DbSet<userkinsfolk> userkinsfolk { get; set; }
         /// <summary>
         /// 人力资源申请表
-        /// </summary>
+        ///</summary>
         public DbSet<ResourcesRequirements> ResourcesRequirements { get; set; }
         public DbSet<Expected_increase_this_year> Expected_increase_this_year { get; set; }
         /// <summary>
