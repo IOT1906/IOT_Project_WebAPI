@@ -21,10 +21,13 @@ namespace IOT_Project_MyDB
         public DbSet<BPMSysUsers> BPMSysUsers { get; set; }
         /// <summary>
         /// 角色表
+        /// 年度计划表
         /// </summary>
         public DbSet<BPMSysOURoles> BPMSysOURoles { get; set; }
+        public DbSet<Annual_plan> Annual_plan { get; set; }
         /// <summary>
         /// 部门表
+        /// 本年预计增加
         /// </summary>
         public DbSet<BPMSysOUs> BPMSysOUs { get; set; }
         /// <summary>
@@ -39,6 +42,11 @@ namespace IOT_Project_MyDB
         /// 人力资源申请表
         /// </summary>
         public DbSet<ResourcesRequirements> ResourcesRequirements { get; set; }
+        public DbSet<Expected_increase_this_year> Expected_increase_this_year { get; set; }
+        /// <summary>
+        /// 请假表迁移
+        /// </summary>
+        public DbSet<Leave> Leave { get; set; }
 
     }
 }

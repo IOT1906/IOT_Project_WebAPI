@@ -1,6 +1,8 @@
 using IOT_Project_IRepository;
+using IOT_Project_IServices;
 using IOT_Project_MyDB;
 using IOT_Project_Repository;
+using IOT_Project_Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -38,24 +40,11 @@ namespace IOT_Project_WebAPI
             services.AddDbContext<MyDbContext>(option => option.UseSqlServer(con));
             //×¢Èë²Ö´¢²ã
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-
-
+            //×¢ÈëÇë¼Ù·þÎñ²ã
+            services.AddScoped<LeaveIservices, LeaveServices>();
+            //×¢ÈëÄê¶È¼Æ»®·þÎñ²ã
+            services.AddScoped<Annual_PlanIServices, Annual_PlanServices>();
             //¿çÓò
-            //EFÇ¨ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿â¡ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½BPMMyUsersï¿½Ä²ï¿½Ó³ï¿½ï¿½
-      
-            services.AddDbContext<MyDbContext>(option => option.UseSqlServer(con));
-            //×¢ï¿½ï¿½Ö´ï¿½ï¿½ï¿?
-
-            //EFÇ¨ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿â¡ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½BPMMyUsersï¿½Ä²ï¿½Ó³ï¿½ï¿½
-        
-            services.AddDbContext<MyDbContext>(option => option.UseSqlServer(con));
-            //×¢ï¿½ï¿½Ö´ï¿½ï¿½ï¿?
-
-            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-
-
-            //ï¿½ï¿½ï¿½ï¿½
-
             services.AddCors(s =>
             {
                 s.AddPolicy("ljq", s =>
@@ -64,6 +53,8 @@ namespace IOT_Project_WebAPI
                      .SetIsOriginAllowed(_ => true).AllowCredentials();
                 });
             });
+
+
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -87,7 +78,7 @@ namespace IOT_Project_WebAPI
                 });
 
             });
-
+            ///ÈÏÖ¤·þÎñ´úÂë
             services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -122,7 +113,7 @@ namespace IOT_Project_WebAPI
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "IOT_Project_WebAPI v1"));
             }
-
+            //¿çÓòÉèÖÃ
             app.UseCors("ljq");
 
             app.UseRouting();
