@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace IOT_Priject_Domin.InputModel
 {
-    // [NotMapped]
+    //[NotMapped]
     /// <summary>
     /// 角色表
     /// </summary>
@@ -15,6 +17,8 @@ namespace IOT_Priject_Domin.InputModel
     {
         [Key]
 
+    
+        [Key]
         public int OUID { get; set; }
         public string RoleName { get; set; }
     }

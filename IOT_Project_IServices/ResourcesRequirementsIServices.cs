@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IOT_Priject_Domin.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,13 @@ namespace IOT_Project_IServices
     /// </summary>
     public interface ResourcesRequirementsIServices
     {
+        /// <summary>
+        /// 人力资源添加方法
+        /// </summary>
+        /// <param name="R"></param>
+        /// <returns></returns>
+        int Radd(ResourcesRequirements R);
+
 
     }
 }
