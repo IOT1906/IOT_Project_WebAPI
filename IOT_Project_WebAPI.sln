@@ -3,19 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31727.386
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOT_Project_WebAPI", "IOT_Project_WebAPI\IOT_Project_WebAPI.csproj", "{B8EDD5C2-7EC3-4D91-9BA0-AD926174854D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IOT_Project_WebAPI", "IOT_Project_WebAPI\IOT_Project_WebAPI.csproj", "{B8EDD5C2-7EC3-4D91-9BA0-AD926174854D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOT_Priject_Domin", "IOT_Priject_Domin\IOT_Priject_Domin.csproj", "{BBF9D211-6D3B-4660-BB42-9919F8B5DD8A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IOT_Priject_Domin", "IOT_Priject_Domin\IOT_Priject_Domin.csproj", "{BBF9D211-6D3B-4660-BB42-9919F8B5DD8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOT_Project_MyDB", "IOT_Project_MyDB\IOT_Project_MyDB.csproj", "{657CEA2C-B517-4296-9869-B1E26CF62971}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IOT_Project_MyDB", "IOT_Project_MyDB\IOT_Project_MyDB.csproj", "{657CEA2C-B517-4296-9869-B1E26CF62971}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOT_Project_IRepository", "IOT_Project_IRepository\IOT_Project_IRepository.csproj", "{8F7E3368-F87F-4CF1-BB61-2F38D086491B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IOT_Project_IRepository", "IOT_Project_IRepository\IOT_Project_IRepository.csproj", "{8F7E3368-F87F-4CF1-BB61-2F38D086491B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOT_Project_Repository", "IOT_Project_Repository\IOT_Project_Repository.csproj", "{6B1EBEE2-7300-4D38-9E33-390F9F9DDDDD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IOT_Project_Repository", "IOT_Project_Repository\IOT_Project_Repository.csproj", "{6B1EBEE2-7300-4D38-9E33-390F9F9DDDDD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOT_Project_IServices", "IOT_Project_IServices\IOT_Project_IServices.csproj", "{66958C0F-9B83-441C-8E77-FCC58A6A6E47}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IOT_Project_IServices", "IOT_Project_IServices\IOT_Project_IServices.csproj", "{66958C0F-9B83-441C-8E77-FCC58A6A6E47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOT_Project_Services", "IOT_Project_Services\IOT_Project_Services.csproj", "{46A3E90D-733E-462F-B4EC-2F3A0527812E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IOT_Project_Services", "IOT_Project_Services\IOT_Project_Services.csproj", "{46A3E90D-733E-462F-B4EC-2F3A0527812E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

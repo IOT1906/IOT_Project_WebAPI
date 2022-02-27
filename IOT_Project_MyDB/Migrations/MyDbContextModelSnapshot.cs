@@ -20,16 +20,20 @@ namespace IOT_Project_MyDB.Migrations
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("IOT_Priject_Domin.Model.staff_entering", b =>
+            modelBuilder.Entity("IOT_Priject_Domin.Model.Leave", b =>
                 {
                     b.Property<int>("sid")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("Taskid")
+                    b.Property<int>("ApplyDemo")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("birthday")
+                    b.Property<DateTime>("ApplyTime")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("contract_deadline")
@@ -42,6 +46,7 @@ namespace IOT_Project_MyDB.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("explain")
+                    b.Property<int>("Day")
                         .HasColumnType("int");
 
                     b.Property<string>("health")
@@ -49,8 +54,11 @@ namespace IOT_Project_MyDB.Migrations
 
                     b.Property<string>("phone")
                         .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("qualifying_period")
+                    b.Property<string>("LeaveCause")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("roleid")
@@ -63,18 +71,23 @@ namespace IOT_Project_MyDB.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("site")
+                    b.Property<string>("LeaveImg")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("speciality")
+                    b.Property<string>("LeaveRemark")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("treatment")
+                    b.Property<string>("LeaveType")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("username")
+                    b.Property<string>("Proposer")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("vouchtime")
+                    b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("whether")
@@ -93,6 +106,7 @@ namespace IOT_Project_MyDB.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("Taskid")
+                    b.Property<int>("TaskId")
                         .HasColumnType("int");
 
                     b.Property<string>("kinsfolk_post")
@@ -105,8 +119,10 @@ namespace IOT_Project_MyDB.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("uid");
+                    b.HasKey("Id");
 
                     b.ToTable("userkinsfolk");
+                    b.ToTable("Leave");
                 });
 #pragma warning restore 612, 618
         }

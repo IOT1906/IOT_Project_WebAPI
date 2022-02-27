@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IOT_Priject_Domin.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +12,11 @@ namespace IOT_Project_IServices
     /// </summary>
     public interface LeaveIservices
     {
+        /// <summary>
+        /// 泛型添加操作
+        /// </summary>
+        /// <param name="mode"></param>
+        /// <returns></returns>
+        int Add(Leave mode);
     }
 }
