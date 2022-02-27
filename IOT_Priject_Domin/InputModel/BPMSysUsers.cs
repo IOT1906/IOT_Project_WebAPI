@@ -16,6 +16,7 @@ namespace Model
         public string  Account { get; set; }
         public string Password { get; set; }
         public bool SysUser { get; set; }
+        public string DisplayName { get; set; }
         public string Sex { get; set; }
         public string Description { get; set; }
         public DateTime Birthday { get; set; }

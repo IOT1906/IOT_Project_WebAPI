@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace bpmdemoapi.models
 {
-    [NotMapped]
+    //[NotMapped]
     public class BaseModels
     {
         
