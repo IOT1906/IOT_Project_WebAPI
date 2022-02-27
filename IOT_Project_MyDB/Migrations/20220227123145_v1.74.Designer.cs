@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IOT_Project_MyDB.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20220225145900_ljq01")]
-    partial class ljq01
+    [Migration("20220227123145_v1.74")]
+    partial class v174
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,49 +21,46 @@ namespace IOT_Project_MyDB.Migrations
                 .HasAnnotation("ProductVersion", "5.0.12")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("IOT_Priject_Domin.Model.Leave", b =>
+            modelBuilder.Entity("IOT_Priject_Domin.Model.Departure", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("DepId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ApplyDemo")
-                        .HasColumnType("int");
+                    b.Property<string>("Applicant")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("ApplyTime")
+                    b.Property<DateTime>("DepTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Day")
-                        .HasColumnType("int");
+                    b.Property<string>("Department")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("EndDate")
+                    b.Property<string>("Depnote")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Depwhy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("EndTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("LeaveCause")
+                    b.Property<string>("Position")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("LeaveImg")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LeaveRemark")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LeaveType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Proposer")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("StartDate")
+                    b.Property<DateTime>("StakeTime")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("TaskId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.Property<int>("TypeId")
+                        .HasColumnType("int");
 
-                    b.ToTable("Leave");
+                    b.HasKey("DepId");
+
+                    b.ToTable("Departure");
                 });
 #pragma warning restore 612, 618
         }

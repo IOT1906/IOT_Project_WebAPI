@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-   //[NotMapped]
+  // [NotMapped]
     public class BPMSysUsers
     {
         [Key]
