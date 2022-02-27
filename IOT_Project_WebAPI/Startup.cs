@@ -40,8 +40,15 @@ namespace IOT_Project_WebAPI
             services.AddDbContext<MyDbContext>(option => option.UseSqlServer(con));
             //注入仓储层
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            //注入请假服务层
+            services.AddScoped<LeaveIservices, LeaveServices>();
+            //注入人力资源申请层
+            services.AddScoped<ResourcesRequirementsIServices, ResourcesRequirementsServices>();
             //注入年度计划服务层
             services.AddScoped<Annual_PlanIServices, Annual_PlanServices>();
+            //注入离职计划服务层
+            services.AddScoped<DepartureIServices, DepartureServices>();
+            
             //跨域
             services.AddCors(s =>
             {
@@ -51,6 +58,8 @@ namespace IOT_Project_WebAPI
                      .SetIsOriginAllowed(_ => true).AllowCredentials();
                 });
             });
+
+
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

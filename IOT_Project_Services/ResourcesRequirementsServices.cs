@@ -1,4 +1,6 @@
-﻿using IOT_Project_IServices;
+﻿using IOT_Priject_Domin.Model;
+using IOT_Project_IRepository;
+using IOT_Project_IServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +14,16 @@ namespace IOT_Project_Services
     /// </summary>
     public class ResourcesRequirementsServices: ResourcesRequirementsIServices
     {
+        private readonly IRepository<ResourcesRequirements> db;
+        public ResourcesRequirementsServices (IRepository<ResourcesRequirements> _db) 
+        {
+            this.db = _db;
+        }
+        public int Radd(ResourcesRequirements R)
+        {
+            return db.Add(R);
+        }
+
+
     }
 }

@@ -16,6 +16,11 @@ namespace IOT_Project_MyDB
         { 
         }
         /// <summary>
+        /// 离职表
+        /// </summary>
+        public DbSet<Departure> Departure { get; set; }
+
+        /// <summary>
         /// 用户表
         /// </summary>
         public DbSet<BPMSysUsers> BPMSysUsers { get; set; }
@@ -43,6 +48,10 @@ namespace IOT_Project_MyDB
         /// </summary>
         public DbSet<ResourcesRequirements> ResourcesRequirements { get; set; }
         public DbSet<Expected_increase_this_year> Expected_increase_this_year { get; set; }
+        /// <summary>
+        /// 请假表迁移
+        /// </summary>
+        public DbSet<Leave> Leave { get; set; }
 
     }
 }

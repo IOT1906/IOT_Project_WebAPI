@@ -1,27 +1,43 @@
 ﻿using BPMAPI.OtherApi;
 using bpmdemoapi.models;
+
+using IOT_Priject_Domin.Model;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebApplication21.Controllers
+/// <summary>
+/// 流程控制器
+/// </summary>
+namespace Project.Controllers
 {
-    public class BaseController
+    [ApiController]
+    public class FlowController :ControllerBase
     {
         private IConfiguration configuration;
-        public BaseController(IConfiguration configuration)
+        public FlowController(IConfiguration configuration)
         {
             this.configuration = configuration;
+        }
+
+        /// <summary>
+        /// 发起流程
+        /// </summary>
+        /// <param name="leave"></param>
+        [HttpPost, Route("api/startdeparture")]
+        public void StartLeave(Departure departure)
+        {
+            StartProccess<Departure>(departure);
         }
         /// <summary>
         /// 获取table
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        private static DataSet GetDataSet(Object data)
+        private DataSet GetDataSet(Object data)
         {
             Type type = data.GetType();
             DataSet formDataSet = new DataSet("FormData");
@@ -43,20 +59,21 @@ namespace WebApplication21.Controllers
             formDataSet.Tables.Add(table);
             return formDataSet;
         }
-        public Task<int> StartProccess<T>(T leave) where T : BaseModels, new()
+        //
+        private Task<int> StartProccess<T>(T leaveNew) where T : BaseModels, new()
         {
-            string formDataSet = ConvertXML.ConvertDataSetToXML(GetDataSet(leave));
+            string formDataSet = ConvertXML.ConvertDataSetToXML(GetDataSet(leaveNew));
             BPMModels models = new BPMModels(configuration)
             {
-                Action = leave.Action,
+                Action = leaveNew.Action,
 
-                BPMUser = leave.BPMUser,
-                BPMUserPass = leave.BPMUserPass,
+                BPMUser = leaveNew.BPMUser,
+                BPMUserPass = leaveNew.BPMUserPass,
                 FormDataSet = formDataSet,
-                FullName = leave.FullName,
-                ProcessName = leave.ProcessName
+                FullName = leaveNew.FullName,
+                ProcessName = leaveNew.ProcessName
             };
-            return MyClientApi.OptClientApi(models.BpmServerUrl, models);
+            return new MyClientApi().OptClientApi(models.BpmServerUrl, models);
         }
     }
 }
