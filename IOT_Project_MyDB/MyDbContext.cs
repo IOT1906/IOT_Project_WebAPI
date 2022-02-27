@@ -16,6 +16,11 @@ namespace IOT_Project_MyDB
         { 
         }
         /// <summary>
+        /// 离职表
+        /// </summary>
+        public DbSet<Departure> Departure { get; set; }
+
+        /// <summary>
         /// 用户表
         /// </summary>
         public DbSet<BPMSysUsers> BPMSysUsers { get; set; }
