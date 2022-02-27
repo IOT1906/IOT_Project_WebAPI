@@ -1,6 +1,9 @@
+using IOT_Priject_Domin.InputModel;
 using IOT_Project_IRepository;
+using IOT_Project_IServices;
 using IOT_Project_MyDB;
 using IOT_Project_Repository;
+using IOT_Project_Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -33,25 +36,28 @@ namespace IOT_Project_WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
 
-            //EFÇ¨ÒÆÊı¾İ¿â¡ª¡ª¡ª¡ª×¢ÒâBPMMyUsersµÄ²»Ó³Éä
+            //EFÇ¨ï¿½ï¿½ï¿½ï¿½ï¿½İ¿â¡ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½BPMMyUsersï¿½Ä²ï¿½Ó³ï¿½ï¿½
             var con = Configuration.GetConnectionString("con");
             services.AddDbContext<MyDbContext>(option => option.UseSqlServer(con));
-            //×¢Èë²Ö´¢²ã
+            //×¢ï¿½ï¿½Ö´ï¿½ï¿½ï¿½
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
 
-            //¿çÓò
+            //ï¿½ï¿½ï¿½ï¿½
             //EFÇ¨ï¿½ï¿½ï¿½ï¿½ï¿½İ¿â¡ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½BPMMyUsersï¿½Ä²ï¿½Ó³ï¿½ï¿½
       
             services.AddDbContext<MyDbContext>(option => option.UseSqlServer(con));
-            //×¢ï¿½ï¿½Ö´ï¿½ï¿½ï¿?
+            //×¢ï¿½ï¿½Ö´ï¿½ï¿½ï¿½?
 
             //EFÇ¨ï¿½ï¿½ï¿½ï¿½ï¿½İ¿â¡ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½BPMMyUsersï¿½Ä²ï¿½Ó³ï¿½ï¿½
         
             services.AddDbContext<MyDbContext>(option => option.UseSqlServer(con));
-            //×¢ï¿½ï¿½Ö´ï¿½ï¿½ï¿?
+            //×¢ï¿½ï¿½Ö´ï¿½ï¿½ï¿½?
 
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            ///éƒ¨é—¨è¡¨ä¾èµ–æ³¨å…¥
+            services.AddScoped(typeof(IRepository<BPMSysOUs>), typeof(Repository<BPMSysOUs>));
+            services.AddScoped<EnteringIServices, EnteringServices>();
 
 
             //ï¿½ï¿½ï¿½ï¿½
@@ -94,19 +100,19 @@ namespace IOT_Project_WebAPI
                 x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(o =>
             {
-                //ÕâÒ»Ûç¾ÍÊÇ¾ÍÊÇpayload
+                //ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½payload
                 o.TokenValidationParameters = new TokenValidationParameters
                 {
-                    // ÊÇ·ñ¿ªÆôÇ©ÃûÈÏÖ¤
+                    // ï¿½Ç·ï¿½ï¿½ï¿½Ç©ï¿½ï¿½ï¿½ï¿½Ö¤
                     ValidateIssuerSigningKey = true,
 
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration.GetSection("secretKey").Value)),
-                    // ·¢ĞĞÈËÑéÖ¤£¬ÕâÀïÒªºÍtokenÀàÖĞClaimÀàĞÍµÄ·¢ĞĞÈË±£³ÖÒ»ÖÂ
+                    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½tokenï¿½ï¿½ï¿½ï¿½Claimï¿½ï¿½ï¿½ÍµÄ·ï¿½ï¿½ï¿½ï¿½Ë±ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
                     ValidateIssuer = true,
-                    ValidIssuer = "API",//·¢ĞĞÈË
-                    // ½ÓÊÕÈËÑéÖ¤
+                    ValidIssuer = "API",//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤
                     ValidateAudience = true,
-                    ValidAudience = "User",//¶©ÔÄÈË
+                    ValidAudience = "User",//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                     ValidateLifetime = true,
                     ClockSkew = TimeSpan.Zero,
                 };
@@ -128,9 +134,9 @@ namespace IOT_Project_WebAPI
             app.UseRouting();
 
 
-            //ÈÏÖ¤
+            //ï¿½ï¿½Ö¤
             app.UseAuthentication();
-            //ÊÚÈ¨
+            //ï¿½ï¿½È¨
 
             //ï¿½ï¿½Ö¤
             app.UseAuthentication();
