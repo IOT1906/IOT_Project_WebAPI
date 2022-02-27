@@ -1,22 +1,21 @@
-﻿using System;
+﻿using bpmdemoapi.models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IOT_Priject_Domin.Model
+namespace IOT_Priject_Domin.InputModel
 {
-    public class Departure
+   public class inputDeparture: BaseModels
+
     {
         [Key]
         /// <summary>
         /// 离职表Id
         /// </summary>
         public int DepId { get; set; }
-        /// <summary>
-        ///  TaskId
-        /// </summary>
         public int TaskId { get; set; }
         /// <summary>
         /// 申请人-带出当前登录人员账号不可填写

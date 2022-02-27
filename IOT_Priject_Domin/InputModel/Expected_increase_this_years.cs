@@ -18,6 +18,7 @@ namespace IOT_Priject_Domin.InputModel
         /// </summary>
         [Key]
         public int YearId { get; set; }
+        public int TackId { get; set; }
         /// <summary>
         /// 岗位---下拉选择
         /// </summary>

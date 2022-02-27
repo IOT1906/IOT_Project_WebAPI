@@ -38,15 +38,18 @@ namespace IOT_Project_WebAPI.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("api/Login")]
-        public string BPMSysUsers(string Account, string Password)
+        public ActionResult BPMSysUsers(string Account, string Password)
         {
-            int use = db.BPMSysUsers.Where(c => c.Account == Account & c.Password == Password).Count();
-            BPMSysUsers log = new BPMSysUsers();
-            if (use > 0)
+            var  use = db.BPMSysUsers.FirstOrDefault(c => c.Account == Account & c.Password == Password);
+            
+            if (use !=null)
             {
-                return GetJWT(log);
+                BPMSysUsers log = new BPMSysUsers();
+                log.Account = Account;
+                log.Password = Password;
+                return Ok(new { token=GetJWT(log),name=use.DisplayName });
             }
-            return "登录失败";
+            return Ok( "登录失败");
 
         }
 

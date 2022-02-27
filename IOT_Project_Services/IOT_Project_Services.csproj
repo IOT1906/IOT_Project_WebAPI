@@ -8,6 +8,7 @@
     <ProjectReference Include="..\IOT_Priject_Domin\IOT_Priject_Domin.csproj" />
     <ProjectReference Include="..\IOT_Project_IRepository\IOT_Project_IRepository.csproj" />
     <ProjectReference Include="..\IOT_Project_IServices\IOT_Project_IServices.csproj" />
+    <ProjectReference Include="..\IOT_Project_MyDB\IOT_Project_MyDB.csproj" />
   </ItemGroup>
 
 </Project>

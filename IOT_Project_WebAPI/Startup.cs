@@ -46,6 +46,9 @@ namespace IOT_Project_WebAPI
             services.AddScoped<ResourcesRequirementsIServices, ResourcesRequirementsServices>();
             //注入年度计划服务层
             services.AddScoped<Annual_PlanIServices, Annual_PlanServices>();
+            //注入离职计划服务层
+            services.AddScoped<DepartureIServices, DepartureServices>();
+            
             //跨域
             services.AddCors(s =>
             {
@@ -124,15 +127,6 @@ namespace IOT_Project_WebAPI
             //认证
             app.UseAuthentication();
             //授权
-
-            //锟斤拷证
-            app.UseAuthentication();
-            //锟斤拷权
-
-            //锟斤拷证
-            app.UseAuthentication();
-            //锟斤拷权
-
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
