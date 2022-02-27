@@ -18,7 +18,7 @@ namespace IOT_Priject_Domin.InputModel
         [Key]
 
     
-        [Key]
+       
         public int OUID { get; set; }
         public string RoleName { get; set; }
     }
