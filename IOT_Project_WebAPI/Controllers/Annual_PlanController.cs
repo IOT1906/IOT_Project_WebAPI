@@ -1,4 +1,5 @@
 ﻿using IOT_Priject_Domin.Model;
+using IOT_Project_IServices;
 using IOT_Project_Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -15,8 +16,8 @@ namespace IOT_Project_WebAPI.Controllers
     [ApiController]
     public class Annual_PlanController : ControllerBase
     {
-        private readonly Annual_PlanServices _Year;
-        public Annual_PlanController(Annual_PlanServices Year)
+        private readonly Annual_PlanIServices _Year;
+        public Annual_PlanController(Annual_PlanIServices Year)
         {
             _Year = Year;
         }
@@ -26,7 +27,7 @@ namespace IOT_Project_WebAPI.Controllers
         /// <param name="year"></param>
         /// <returns></returns>
         [HttpPost,Route("api/ExpectedAdd")]
-        public int ExpectedAdd(Expected_increase_this_year year)
+        public int ExpectedAdd([FromBody]Expected_increase_this_year year)
         {
             return _Year.ExpectedAdd(year);
         }
@@ -36,9 +37,12 @@ namespace IOT_Project_WebAPI.Controllers
         /// <param name="year"></param>
         /// <returns></returns>
         [HttpPost, Route("api/AnnualAdd")]
-        public int AnnualAdd(Annual_plan year)
+        public int AnnualAdd([FromBody] Annual_plan year)
         {
             return _Year.AnnualAdd(year);
         }
+
+        
+
     }
 }

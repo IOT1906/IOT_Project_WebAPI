@@ -17,6 +17,7 @@ namespace IOT_Priject_Domin.Model
         /// 年度Id
         /// </summary>
         public int Annualid { get; set; }
+        public int TackId { get; set; }
         /// <summary>
         /// 制表人---自动生成
         /// </summary>
@@ -28,11 +29,11 @@ namespace IOT_Priject_Domin.Model
         /// <summary>
         /// 制表时间---自动生成
         /// </summary>
-        public DateTime Tabulation_time { get; set; }
+        public string Tabulation_time { get; set; }
         /// <summary>
         /// 年份---自动生成
         /// </summary>
-        public DateTime Particular_year { get; set; }
+        public string Particular_year { get; set; }
 
 
 
