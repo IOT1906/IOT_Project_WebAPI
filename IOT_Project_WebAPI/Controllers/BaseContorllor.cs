@@ -1,5 +1,6 @@
 ﻿using BPMAPI.OtherApi;
 using bpmdemoapi.models;
+using IOT_Priject_Domin.Model;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,8 @@ namespace WebApplication21.Controllers
         {
             this.configuration = configuration;
         }
+
+
         /// <summary>
         /// 获取table
         /// </summary>
