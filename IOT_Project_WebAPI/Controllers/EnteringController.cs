@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using IOT_Project_IServices;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -13,5 +14,22 @@ namespace IOT_Project_WebAPI.Controllers
     [ApiController]
     public class EnteringController : ControllerBase
     {
+        private EnteringIServices db;
+        public EnteringController(EnteringIServices _db)
+        {
+            db = _db;
+        }
+        [HttpGet]
+        [Route("api/bind")]
+        public ActionResult bind()
+        {
+           return Ok(db.bind());
+        }
+        [HttpGet]
+        [Route("api/getbind")]
+        public ActionResult getbind(int id)
+        {
+            return Ok(db.getbind(id));
+        }
     }
 }
