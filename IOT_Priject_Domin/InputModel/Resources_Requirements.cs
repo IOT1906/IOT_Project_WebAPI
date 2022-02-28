@@ -7,13 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IOT_Priject_Domin.Model
+namespace IOT_Priject_Domin.InputModel
 {
     
-    /// <summary>
-    /// EF迁移人力资源需求
-    /// </summary>
-    public class ResourcesRequirements : BaseModels
+    public class Resources_Requirements :BaseModels
     {
         [Key]
         public int Id { get; set; }

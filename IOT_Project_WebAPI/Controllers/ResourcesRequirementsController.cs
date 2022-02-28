@@ -39,7 +39,7 @@ namespace IOT_Project_WebAPI.Controllers
         }
 
         /// <summary>
-        /// 发起请假流程
+        /// 发起人力资源申请
         /// </summary>
         /// <param name="ResourcesRequirements"></param>
         [HttpPost, Route("api/RAdd")]
