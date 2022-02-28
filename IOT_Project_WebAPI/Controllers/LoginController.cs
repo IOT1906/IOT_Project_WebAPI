@@ -47,7 +47,7 @@ namespace IOT_Project_WebAPI.Controllers
                 BPMSysUsers log = new BPMSysUsers();
                 log.Account = Account;
                 log.Password = Password;
-                return Ok(new { token=GetJWT(log),name=use.DisplayName });
+                return Ok(new { token=GetJWT(log),name=use });
             }
             return Ok( "登录失败");
 
