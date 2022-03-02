@@ -18,6 +18,7 @@ namespace IOT_Priject_Domin.InputModel
         /// 年度Id
         /// </summary>
         public int Annualid { get; set; }
+        public int TackId { get; set; }
         /// <summary>
         /// 制表人---手动输入
         /// </summary>
@@ -29,11 +30,11 @@ namespace IOT_Priject_Domin.InputModel
         /// <summary>
         /// 制表时间---自动生成
         /// </summary>
-        public string Tabulation_time { get; set; } = @DateTime.Now.ToString("yyyy年mm月dd H:mm:ss");
+        public string Tabulation_time { get; set; }
         /// <summary>
-        /// 年份---自动输入
+        /// 年份---自动生成
         /// </summary>
-        public string Particular_year { get; set; } = @DateTime.Now.ToString("yyyy");
+        public string Particular_year { get; set; }
 
 
 

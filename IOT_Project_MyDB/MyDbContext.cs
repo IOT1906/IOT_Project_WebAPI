@@ -56,7 +56,6 @@ namespace IOT_Project_MyDB
         /// 离职表
         /// </summary>
         public DbSet<Departure> Departure { get; set; }
-
         /// <summary>
         /// 用户表
         /// </summary>
@@ -82,13 +81,24 @@ namespace IOT_Project_MyDB
         public DbSet<userkinsfolk> userkinsfolk { get; set; }
         /// <summary>
         /// 人力资源申请表
-        /// </summary>
+        ///</summary>
         public DbSet<ResourcesRequirements> ResourcesRequirements { get; set; }
         public DbSet<Expected_increase_this_year> Expected_increase_this_year { get; set; }
         /// <summary>
         /// 请假表迁移
         /// </summary>
         public DbSet<Leave> Leave { get; set; }
-
+        /// <summary>
+        /// 离职交接表迁移
+        /// </summary>
+        public DbSet<HandOver> HandOver { get; set; }
+        /// <summary>
+        /// 用车申请表迁移
+        /// </summary>
+        public DbSet<Carapply> Carapply { get; set; }
+        /// <summary>
+        /// 员工离职面谈表迁移
+        /// </summary>
+        public DbSet<Interview> Interview { get; set; }
     }
 }

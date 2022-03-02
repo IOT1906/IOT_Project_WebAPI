@@ -35,21 +35,21 @@ namespace IOT_Project_WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
 
-            //EFÇ¨ÒÆÊı¾İ¿â¡ª¡ª¡ª¡ª×¢ÒâBPMMyUsersµÄ²»Ó³Éä
+            //EFè¿ç§»æ•°æ®åº“â€”â€”â€”â€”æ³¨æ„BPMMyUsersçš„ä¸æ˜ å°„
             var con = Configuration.GetConnectionString("con");
             services.AddDbContext<MyDbContext>(option => option.UseSqlServer(con));
-            //×¢Èë²Ö´¢²ã
+            //æ³¨å…¥ä»“å‚¨å±‚
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-            //×¢ÈëÇë¼Ù·şÎñ²ã
+            //æ³¨å…¥è¯·å‡æœåŠ¡å±‚
             services.AddScoped<LeaveIservices, LeaveServices>();
-            //×¢ÈëÈËÁ¦×ÊÔ´ÉêÇë²ã
+            //æ³¨å…¥äººåŠ›èµ„æºç”³è¯·å±‚
             services.AddScoped<ResourcesRequirementsIServices, ResourcesRequirementsServices>();
-            //×¢ÈëÄê¶È¼Æ»®·şÎñ²ã
+            //æ³¨å…¥å¹´åº¦è®¡åˆ’æœåŠ¡å±‚
             services.AddScoped<Annual_PlanIServices, Annual_PlanServices>();
-            //×¢ÈëÀëÖ°¼Æ»®·şÎñ²ã
+            //æ³¨å…¥ç¦»èŒè®¡åˆ’æœåŠ¡å±‚
             services.AddScoped<DepartureIServices, DepartureServices>();
             
-            //¿çÓò
+            //è·¨åŸŸ
             services.AddCors(s =>
             {
                 s.AddPolicy("ljq", s =>
@@ -83,26 +83,26 @@ namespace IOT_Project_WebAPI
                 });
 
             });
-            ///ÈÏÖ¤·şÎñ´úÂë
+            ///è®¤è¯æœåŠ¡ä»£ç 
             services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(o =>
             {
-                //ÕâÒ»Ûç¾ÍÊÇ¾ÍÊÇpayload
+                //è¿™ä¸€å¨å°±æ˜¯å°±æ˜¯payload
                 o.TokenValidationParameters = new TokenValidationParameters
                 {
-                    // ÊÇ·ñ¿ªÆôÇ©ÃûÈÏÖ¤
+                    // æ˜¯å¦å¼€å¯ç­¾åè®¤è¯
                     ValidateIssuerSigningKey = true,
 
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration.GetSection("secretKey").Value)),
-                    // ·¢ĞĞÈËÑéÖ¤£¬ÕâÀïÒªºÍtokenÀàÖĞClaimÀàĞÍµÄ·¢ĞĞÈË±£³ÖÒ»ÖÂ
+                    // å‘è¡ŒäººéªŒè¯ï¼Œè¿™é‡Œè¦å’Œtokenç±»ä¸­Claimç±»å‹çš„å‘è¡Œäººä¿æŒä¸€è‡´
                     ValidateIssuer = true,
-                    ValidIssuer = "API",//·¢ĞĞÈË
-                    // ½ÓÊÕÈËÑéÖ¤
+                    ValidIssuer = "API",//å‘è¡Œäºº
+                    // æ¥æ”¶äººéªŒè¯
                     ValidateAudience = true,
-                    ValidAudience = "User",//¶©ÔÄÈË
+                    ValidAudience = "User",//è®¢é˜…äºº
                     ValidateLifetime = true,
                     ClockSkew = TimeSpan.Zero,
                 };
@@ -118,24 +118,15 @@ namespace IOT_Project_WebAPI
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "IOT_Project_WebAPI v1"));
             }
-            //¿çÓòÉèÖÃ
+            //è·¨åŸŸè®¾ç½®
             app.UseCors("ljq");
 
             app.UseRouting();
 
 
-            //ÈÏÖ¤
+            //è®¤è¯
             app.UseAuthentication();
-            //ÊÚÈ¨
-
-            //ï¿½ï¿½Ö¤
-            app.UseAuthentication();
-            //ï¿½ï¿½È¨
-
-            //ï¿½ï¿½Ö¤
-            app.UseAuthentication();
-            //ï¿½ï¿½È¨
-
+            //æˆæƒ
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

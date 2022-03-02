@@ -35,20 +35,20 @@ namespace IOT_Project_Services
             return ss;
         }
 
+
+
         public List<BPMSysOURoles> getbind(int id)
         {
             throw new System.NotImplementedException();
         }
-        //public List<BPMSysOURoles> getbind(int id)
-        //{
 
-        //    var ss = (from s in db.BPMSysOURoles select s).ToList().Distinct().ToList();
-        //    //  var ss= db.BPMSysOURoles.ToList();
-        //    if (id != 0)
-        //    {
-        //        ss = ss.Where(x => x.OUID == id).ToList();
-        //    }
-        //    return ss;
-        //}
+            var ss = (from s in db.BPMSysOURoles select s).ToList().Distinct().ToList();
+            //  var ss= db.BPMSysOURoles.ToList();
+            if (id != 0)
+            {
+                ss = ss.Where(x => x.OUID == id).ToList();
+            }
+            return ss;
+        }
     }
 }

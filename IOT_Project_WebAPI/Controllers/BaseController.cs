@@ -101,14 +101,14 @@ namespace Api.Controllers
             }
             return xml;
         }
-        ///// <summary>
-        ///// 获取table
-        ///// </summary>
-        ///// <param name="data"></param>
-        ///// <returns></returns>
-        //private static DataSet GetDataSet(Object data)
-        //{
-        //    Type type = data.GetType();
+        /// <summary>
+        /// 获取table
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        private static DataSet GetDataSet(Object data)
+        {
+            Type type = data.GetType();
 
 
         //    DataSet formDataSet = new DataSet("FormData");
@@ -156,5 +156,7 @@ namespace Api.Controllers
             };
             return MyClientApi.OptClientApi(models.BpmServerUrl, models);
         }
+
+       
     }
 }

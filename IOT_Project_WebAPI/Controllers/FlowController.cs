@@ -6,16 +6,16 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System;
-using System.Data;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using WebApplication21.Controllers;
 
-/// <summary>
-/// 流程控制器
-/// </summary>
-namespace Project.Controllers
+namespace IOT_Project_WebAPI.Controllers
 {
+    
     [ApiController]
-    public class FlowController :ControllerBase
+    public class FlowController : BaseController
     {
         private IConfiguration configuration;
         public FlowController(IConfiguration configuration)
@@ -23,14 +23,20 @@ namespace Project.Controllers
             this.configuration = configuration;
         }
 
+        public FlowController(IConfiguration configuration) : base(configuration)
+        {
+             StartProccess<ResourcesRequirements>(resourcesRequirements);
+
+          
+        }
         /// <summary>
-        /// 发起流程
+        /// 发起请假流程
         /// </summary>
         /// <param name="leave"></param>
-        [HttpPost, Route("api/startdeparture")]
-        public void StartLeave(Departure departure)
+        [HttpPost, Route("api/startleave")]
+        public void StartLeave(Leave leave)
         {
-            StartProccess<Departure>(departure);
+            StartProccess<Leave>(leave);
         }
         /// <summary>
         /// 获取table
