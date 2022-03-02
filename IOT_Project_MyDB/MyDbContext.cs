@@ -16,6 +16,43 @@ namespace IOT_Project_MyDB
         { 
         }
         /// <summary>
+        /// 会议室新增
+        /// </summary>
+        public DbSet<Meeting> Meeting { get; set; }
+
+        /// <summary>
+        /// 日常用品采购申请单——详细信息
+        /// </summary>
+        public DbSet<Dailydetailed> Dailydetailed { get; set; }
+
+
+        /// <summary>
+        /// 日常用品采购申请单
+        /// </summary>
+        public DbSet<Daily> Daily { get; set; }
+
+
+        /// <summary>
+        /// 接待申请表——物品详细信息
+        /// </summary>
+        public DbSet<ReceItemDetails> ReceItemDetails { get; set; }
+
+
+        /// <summary>
+        /// 接待申请表——行程信息
+        /// </summary>
+
+        public DbSet<ReceItineraryDetails> ReceItineraryDetails { get; set; }
+
+
+        /// <summary>
+        /// 接待申请表
+        /// </summary>
+        public DbSet<Receptionbase> Receptionbase { get; set; }
+
+
+
+        /// <summary>
         /// 离职表
         /// </summary>
         public DbSet<Departure> Departure { get; set; }
