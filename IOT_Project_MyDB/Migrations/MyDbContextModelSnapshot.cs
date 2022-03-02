@@ -18,286 +18,108 @@ namespace IOT_Project_MyDB.Migrations
                 .HasAnnotation("ProductVersion", "5.0.12")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-<<<<<<< HEAD
-            modelBuilder.Entity("IOT_Priject_Domin.Model.Carapply", b =>
+            modelBuilder.Entity("IOT_Priject_Domin.Model.staff_entering", b =>
+            modelBuilder.Entity("IOT_Priject_Domin.Model.Leave", b =>
                 {
-                    b.Property<int>("CarapplyId")
-=======
-            modelBuilder.Entity("IOT_Priject_Domin.Model.ResourcesRequirements", b =>
-                {
+                    b.Property<int>("sid")
                     b.Property<int>("Id")
->>>>>>> d20fe4c775673a04dc654d0243dddcf60287df85
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-<<<<<<< HEAD
-                    b.Property<string>("CarapplyApproach")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CarapplyCommon")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CarapplyDepart")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CarapplyDeparture")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CarapplyDriver")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CarapplyEndDate")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CarapplyFinish")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CarapplyKilometre")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CarapplyPlate")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CarapplyPractical")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CarapplyProposer")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CarapplyProposerDate")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CarapplyReason")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CarapplyRemark")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CarapplyRiding")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CarapplyStartDate")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CarapplyTProposerDemp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CarapplyTarget")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("CarapplyTaskId")
+                    b.Property<int>("Taskid")
+                    b.Property<int>("ApplyDemo")
                         .HasColumnType("int");
 
-                    b.Property<string>("CarapplyWeek")
+                    b.Property<DateTime>("birthday")
+                    b.Property<DateTime>("ApplyTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("contract_deadline")
+                        .HasColumnType("int");
+
+                    b.Property<string>("culturedegree")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("CarapplyId");
+                    b.Property<int>("departmentid")
+                        .HasColumnType("int");
 
-                    b.ToTable("Carapply");
+                    b.Property<int>("explain")
+                    b.Property<int>("Day")
+                        .HasColumnType("int");
+
+                    b.Property<string>("health")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("qualifying_period")
+                    b.Property<string>("LeaveCause")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("roleid")
+                        .HasColumnType("int");
+
+                    b.Property<int>("roletype")
+                        .HasColumnType("int");
+
+                    b.Property<int>("sex")
+                        .HasColumnType("int");
+
+                    b.Property<string>("site")
+                    b.Property<string>("LeaveImg")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("speciality")
+                    b.Property<string>("LeaveRemark")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("treatment")
+                    b.Property<string>("LeaveType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("username")
+                    b.Property<string>("Proposer")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("vouchtime")
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("whether")
+                        .HasColumnType("int");
+
+                    b.HasKey("sid");
+
+                    b.ToTable("taff_entering");
                 });
 
-            modelBuilder.Entity("IOT_Priject_Domin.Model.HandOver", b =>
+            modelBuilder.Entity("IOT_Priject_Domin.Model.userkinsfolk", b =>
                 {
-                    b.Property<int>("HId")
+                    b.Property<int>("uid")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("HandDemp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HandDempCondition")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HandDempContent")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HandFinceCondition")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HandFinceContent")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HandHeir")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HandImgurl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HandName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HandProve")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HandRemark")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HandStativeCondition")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HandStativeContent")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Handdate")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Handpostion")
-                        .HasColumnType("nvarchar(max)");
-
+                    b.Property<int>("Taskid")
                     b.Property<int>("TaskId")
                         .HasColumnType("int");
 
-                    b.HasKey("HId");
-
-                    b.ToTable("HandOver");
-                });
-
-            modelBuilder.Entity("IOT_Priject_Domin.Model.Interview", b =>
-                {
-                    b.Property<int>("TnterviewId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("InterviewAward")
+                    b.Property<string>("kinsfolk_post")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("InterviewCase")
+                    b.Property<string>("kinsfolkname")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("InterviewChnnel")
+                    b.Property<string>("relation")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("InterviewCompany")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("InterviewDepartment")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("InterviewEmploy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("InterviewEndDate")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("InterviewLabor")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("InterviewLeaving")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("InterviewLister")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("InterviewListerDate")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("InterviewListerDemp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("InterviewManage")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("InterviewPay")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("InterviewProspect")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("InterviewRecord")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("InterviewRemark")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("InterviewSatisfaction")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("InterviewStaffName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("InterviewStaffNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("InterviewStaion")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("InterviewStarDate")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("InterviewTrain")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TaskId")
-                        .HasColumnType("int");
-
-                    b.HasKey("TnterviewId");
-
-                    b.ToTable("Interview");
-=======
-                    b.Property<string>("Age")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Annex")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Applicationdepartment")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Applicationtime")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Contract")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Education")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Jobdescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Jobrequirements")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Jobtitle")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Numberofpeopleonhand")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Numberofrecruits")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Other")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Probationperiod")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Professionalrequirements")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Reasonforapplication")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Remark")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Salarypackage")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Sex")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TaskId")
-                        .HasColumnType("int");
-
+                    b.HasKey("uid");
                     b.HasKey("Id");
 
-                    b.ToTable("ResourcesRequirements");
->>>>>>> d20fe4c775673a04dc654d0243dddcf60287df85
+                    b.ToTable("userkinsfolk");
+                    b.ToTable("Leave");
                 });
 #pragma warning restore 612, 618
         }
