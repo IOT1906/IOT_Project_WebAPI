@@ -12,11 +12,11 @@ namespace IOT_Project_IServices
     /// </summary>
     public interface LeaveIservices
     {
-        /// <summary>
-        /// 泛型添加操作
-        /// </summary>
-        /// <param name="mode"></param>
-        /// <returns></returns>
-        int Add(Leave mode);
+        ///// <summary>
+        ///// 泛型添加操作
+        ///// </summary>
+        ///// <param name="mode"></param>
+        ///// <returns></returns>
+        //int Add(Leave mode);
     }
 }
