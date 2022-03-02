@@ -30,27 +30,28 @@ namespace IOT_Project_WebAPI.Controllers
         }
 
 
-        /// <summary>
-        /// 判断用户名和密码
-        /// </summary>
-        /// <param name="Account"></param>
-        /// <param name="Password"></param>
-        /// <returns></returns>
+        // <summary>
+        // 判断用户名和密码
+        // </summary>
+        // <param name = "Account" ></ param >
+        // < param name="Password"></param>
+        // <returns></returns>
         [HttpGet]
         [Route("api/Login")]
         public ActionResult BPMSysUsers(string Account, string Password)
         {
-            var  use = db.BPMSysUsers.FirstOrDefault(c => c.Account == Account & c.Password == Password);
-            
-            if (use !=null)
+            var use = db.BPMSysUsers.FirstOrDefault(c => c.Account == Account & c.Password == Password);
+
+            if (use != null)
             {
                 BPMSysUsers log = new BPMSysUsers();
                 log.Account = Account;
                 log.Password = Password;
-                return Ok(new { token=GetJWT(log),name=use });
+                return Ok(new { token = GetJWT(log), ss = use });
             }
-            return Ok( "登录失败");
-
+                return Ok("登录失败"); 
+               
+              
         }
 
 

@@ -12,6 +12,6 @@ namespace IOT_Project_IServices
     /// </summary>
     public interface DepartureIServices
     {
-        int DepAdd(Departure Del);
+        
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using bpmdemoapi.models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -11,8 +12,8 @@ namespace IOT_Priject_Domin.Model
         /// <summary>
         /// 请假申请流程表
         /// </summary>
-        public class Leave
-        {
+        public class Leave: BaseModels
+    {
             [Key]
             /// <summary>
             /// Id

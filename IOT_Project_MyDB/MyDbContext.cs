@@ -16,6 +16,43 @@ namespace IOT_Project_MyDB
         { 
         }
         /// <summary>
+        /// 会议室新增
+        /// </summary>
+        public DbSet<Meeting> Meeting { get; set; }
+
+        /// <summary>
+        /// 日常用品采购申请单——详细信息
+        /// </summary>
+        public DbSet<Dailydetailed> Dailydetailed { get; set; }
+
+
+        /// <summary>
+        /// 日常用品采购申请单
+        /// </summary>
+        public DbSet<Daily> Daily { get; set; }
+
+
+        /// <summary>
+        /// 接待申请表——物品详细信息
+        /// </summary>
+        public DbSet<ReceItemDetails> ReceItemDetails { get; set; }
+
+
+        /// <summary>
+        /// 接待申请表——行程信息
+        /// </summary>
+
+        public DbSet<ReceItineraryDetails> ReceItineraryDetails { get; set; }
+
+
+        /// <summary>
+        /// 接待申请表
+        /// </summary>
+        public DbSet<Receptionbase> Receptionbase { get; set; }
+
+
+
+        /// <summary>
         /// 离职表
         /// </summary>
         public DbSet<Departure> Departure { get; set; }
@@ -63,5 +100,17 @@ namespace IOT_Project_MyDB
         /// 固定资产资料借用表
         /// </summary>
         public DbSet<Loanrequest> Loanrequest { get; set; }
+        /// <summary>
+        /// 离职交接表迁移
+        /// </summary>
+        public DbSet<HandOver> HandOver { get; set; }
+        /// <summary>
+        /// 用车申请表迁移
+        /// </summary>
+        public DbSet<Carapply> Carapply { get; set; }
+        /// <summary>
+        /// 员工离职面谈表迁移
+        /// </summary>
+        public DbSet<Interview> Interview { get; set; }
     }
 }

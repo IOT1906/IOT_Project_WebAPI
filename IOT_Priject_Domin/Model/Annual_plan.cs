@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace IOT_Priject_Domin.Model
 {
-    
     /// <summary>
     /// 年度计划表
     /// </summary>
