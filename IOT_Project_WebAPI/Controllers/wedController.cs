@@ -19,11 +19,6 @@ namespace IOT_Project_WebAPI.Controllers
         {
 
         }
-        [HttpPost, Route("api/atratleave")]
-        public void atratleave(PlanAll model)
-        {
-            var xml = CollectionToSqlXml<Departure>(model.PlanDate);
-            StartProccess(xml,model);
-        }
+      
     }
 }

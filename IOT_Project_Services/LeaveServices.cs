@@ -19,14 +19,14 @@ namespace IOT_Project_Services
         {
             this.db = db;
         }
-        ///// <summary>
-        ///// 请假提交申请
-        ///// </summary>
-        ///// <param name="mode"></param>
-        ///// <returns></returns>
-        //public int Add(Leave mode)
-        //{
-        //    return db.Add(mode);
-        //}
+        /// <summary>
+        /// 请假提交申请
+        /// </summary>
+        /// <param name="mode"></param>
+        /// <returns></returns>
+        public int Add(Leave mode)
+        {
+            return db.Add(mode);
+        }
     }
 }
