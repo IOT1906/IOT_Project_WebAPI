@@ -18,13 +18,20 @@ namespace IOT_Project_MyDB.Migrations
                 .HasAnnotation("ProductVersion", "5.0.12")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+<<<<<<< HEAD
             modelBuilder.Entity("IOT_Priject_Domin.Model.Carapply", b =>
                 {
                     b.Property<int>("CarapplyId")
+=======
+            modelBuilder.Entity("IOT_Priject_Domin.Model.ResourcesRequirements", b =>
+                {
+                    b.Property<int>("Id")
+>>>>>>> d20fe4c775673a04dc654d0243dddcf60287df85
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+<<<<<<< HEAD
                     b.Property<string>("CarapplyApproach")
                         .HasColumnType("nvarchar(max)");
 
@@ -229,6 +236,68 @@ namespace IOT_Project_MyDB.Migrations
                     b.HasKey("TnterviewId");
 
                     b.ToTable("Interview");
+=======
+                    b.Property<string>("Age")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Annex")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Applicationdepartment")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Applicationtime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Contract")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Education")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Jobdescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Jobrequirements")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Jobtitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Numberofpeopleonhand")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Numberofrecruits")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Other")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Probationperiod")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Professionalrequirements")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Reasonforapplication")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Remark")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Salarypackage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Sex")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TaskId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ResourcesRequirements");
+>>>>>>> d20fe4c775673a04dc654d0243dddcf60287df85
                 });
 #pragma warning restore 612, 618
         }

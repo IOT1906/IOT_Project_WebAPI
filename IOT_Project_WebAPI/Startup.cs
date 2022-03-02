@@ -1,4 +1,3 @@
-using IOT_Priject_Domin.InputModel;
 using IOT_Project_IRepository;
 using IOT_Project_IServices;
 using IOT_Project_MyDB;
@@ -36,26 +35,21 @@ namespace IOT_Project_WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
 
-            //EF迁移
+            //EF迁移数据库————注意BPMMyUsers的不映射
             var con = Configuration.GetConnectionString("con");
             services.AddDbContext<MyDbContext>(option => option.UseSqlServer(con));
-            //仓储层注入
+            //注入仓储层
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-
-            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-            ///部门表依赖注入
-            services.AddScoped(typeof(IRepository<BPMSysOUs>), typeof(Repository<BPMSysOUs>));
-            //员工录入注入
-            services.AddScoped<EnteringIServices, EnteringServices>();
-            //离职服务层注入
-            services.AddScoped<DepartureIServices, DepartureServices>();
-            //请假服务层注入
+            //注入请假服务层
             services.AddScoped<LeaveIservices, LeaveServices>();
-            //人力资源需求注入
+            //注入人力资源申请层
             services.AddScoped<ResourcesRequirementsIServices, ResourcesRequirementsServices>();
-            //ע年度计划注入
+            //注入年度计划服务层
             services.AddScoped<Annual_PlanIServices, Annual_PlanServices>();
-            //跨域配置
+            //注入离职计划服务层
+            services.AddScoped<DepartureIServices, DepartureServices>();
+            
+            //跨域
             services.AddCors(s =>
             {
                 s.AddPolicy("ljq", s =>
@@ -89,26 +83,26 @@ namespace IOT_Project_WebAPI
                 });
 
             });
-            ///��֤�������
+            ///认证服务代码
             services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(o =>
             {
-                //��һ����Ǿ���payload
+                //这一坨就是就是payload
                 o.TokenValidationParameters = new TokenValidationParameters
                 {
-                    // �Ƿ���ǩ����֤
+                    // 是否开启签名认证
                     ValidateIssuerSigningKey = true,
 
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration.GetSection("secretKey").Value)),
-                    // ��������֤������Ҫ��token����Claim���͵ķ����˱���һ��
+                    // 发行人验证，这里要和token类中Claim类型的发行人保持一致
                     ValidateIssuer = true,
-                    ValidIssuer = "API",//������
-                    // ��������֤
+                    ValidIssuer = "API",//发行人
+                    // 接收人验证
                     ValidateAudience = true,
-                    ValidAudience = "User",//������
+                    ValidAudience = "User",//订阅人
                     ValidateLifetime = true,
                     ClockSkew = TimeSpan.Zero,
                 };
@@ -124,10 +118,11 @@ namespace IOT_Project_WebAPI
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "IOT_Project_WebAPI v1"));
             }
-            //使用跨域
+            //跨域设置
             app.UseCors("ljq");
 
             app.UseRouting();
+
 
             //认证
             app.UseAuthentication();
