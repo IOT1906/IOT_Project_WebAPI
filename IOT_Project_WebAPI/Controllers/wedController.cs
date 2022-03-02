@@ -1,4 +1,5 @@
 ﻿using Api.Controllers;
+using IOT_Priject_Domin.InputModel;
 using IOT_Priject_Domin.InputModels;
 using IOT_Priject_Domin.Model;
 using Microsoft.AspNetCore.Http;

@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IOT_Priject_Domin.InputModels
+namespace IOT_Priject_Domin.InputModel
 {
-    public class PlanAll:BaseModels
+    public class PlanAll: BaseModels
     {
         public string PlanDate { get; set; }
     }
