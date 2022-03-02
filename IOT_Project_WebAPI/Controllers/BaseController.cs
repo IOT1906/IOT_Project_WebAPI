@@ -1,7 +1,7 @@
 ﻿using BPMAPI.OtherApi;
 using bpmdemoapi.models;
-using IOT_Priject_Domin.Model;
-using Microsoft.AspNetCore.Mvc;
+
+
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System;
@@ -15,13 +15,11 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace WebApplication21.Controllers
+
+namespace Api.Controllers
 {
-    public enum IsMaster
-    {
-        master = 1,
-        detail = 2
-    }
+
+
     public class BaseController
     {
         protected DataSet dataSet = new DataSet("FormData");
@@ -31,20 +29,24 @@ namespace WebApplication21.Controllers
         {
             this.configuration = configuration;
         }
-        protected string CollectionToSqlXml<T>(string json, IsMaster isMaster) where T : class, new()
+        protected string CollectionToSqlXml<T>(string json) where T : class, new()
         {
             List<T> TCollection;
-            if (isMaster == IsMaster.master)
-            {
-                TCollection = JsonConvert.DeserializeObject<List<T>>("[" + json + "]");
-            }
-            else
+            if (json.IndexOf("[{") >= 0)
             {
                 TCollection = JsonConvert.DeserializeObject<List<T>>(json);
             }
 
+
+            else
+            {
+                TCollection = JsonConvert.DeserializeObject<List<T>>("[" + json + "]");
+            }
+
+
             //先把集合转换成数据表，然后把数据表转换成SQLXML
             return DataTableToSqlXml(CollectionToDataTable(TCollection)).Value.Replace("<DocumentElement>", "").Replace("</DocumentElement>", "");
+
 
         }
         private DataTable CollectionToDataTable<T>(List<T> TCollection)
@@ -108,53 +110,43 @@ namespace WebApplication21.Controllers
         {
             Type type = data.GetType();
 
-            DataSet formDataSet = new DataSet("FormData");
 
-            DataTable table = new DataTable(type.Name);
-            string IsNotField = "Action,BPMUser,BPMUserPass,FullName,ProcessName";
-            foreach (var property in type.GetProperties())
-            {
+        //    DataSet formDataSet = new DataSet("FormData");
 
-                if (!IsNotField.Contains(property.Name))
-                    table.Columns.Add(new DataColumn(property.Name, property.PropertyType));
-            }
-            DataRow add_row = table.NewRow();
-            foreach (var property in type.GetProperties())
-            {
-                if (!IsNotField.Contains(property.Name))
-                    add_row[property.Name] = property.GetValue(data);
-            }
-            table.Rows.Add(add_row);
-            formDataSet.Tables.Add(table);
-            return formDataSet;
-        }
 
-        [HttpPost]
-        [Route("api/stratBPM")]
-        public Task<int> StartProccess<T>(T leaveNew) where T :BaseModels,new()
-        {
-            string formDataSet = ConvertXML.ConvertDataSetToXML(GetDataSet(leaveNew));
-            BPMModels models = new BPMModels(configuration)
-            {
-                Action = leaveNew.Action,
+        //    DataTable table = new DataTable(type.Name);
+        //    string IsNotField = "Action,BPMUser,BPMUserPass,FullName,ProcessName";
+        //    foreach (var property in type.GetProperties())
+        //    {
 
-                BPMUser = leaveNew.BPMUser,
-                BPMUserPass = leaveNew.BPMUserPass,
-                FormDataSet = formDataSet,
-                FullName = leaveNew.FullName,
-                ProcessName = leaveNew.ProcessName
-            };
-            return MyClientApi.OptClientApi(models.BpmServerUrl, models);
-        }
+
+        //        if (!IsNotField.Contains(property.Name))
+        //            table.Columns.Add(new DataColumn(property.Name, property.PropertyType));
+        //    }
+        //    DataRow add_row = table.NewRow();
+        //    foreach (var property in type.GetProperties())
+        //    {
+        //        if (!IsNotField.Contains(property.Name))
+        //            add_row[property.Name] = property.GetValue(data);
+        //    }
+        //    table.Rows.Add(add_row);
+        //    formDataSet.Tables.Add(table);
+        //    return formDataSet;
+        //}
+
+
 
 
         protected Task<int> StartProccess(string formDataSet, BaseModels baseModels)
         {
 
 
+
+
             BPMModels models = new BPMModels(configuration)
             {
                 Action = baseModels.Action,
+
 
                 BPMUser = baseModels.BPMUser,
                 BPMUserPass = baseModels.BPMUserPass,

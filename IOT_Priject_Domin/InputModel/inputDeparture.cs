@@ -2,14 +2,15 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace IOT_Priject_Domin.InputModel
 {
-   public class inputDeparture: BaseModels
-
+   [NotMapped]
+    public class inputDeparture : BaseModels
     {
         [Key]
         /// <summary>
@@ -28,7 +29,7 @@ namespace IOT_Priject_Domin.InputModel
         /// <summary>
         /// 申请日期-自动填写
         /// </summary>
-        public DateTime DepTime { get; set; } = new DateTime();
+        public DateTime DepTime { get; set; }
         /// <summary>
         ///职位-带出当前登录人员账号不可填写
         /// </summary>
