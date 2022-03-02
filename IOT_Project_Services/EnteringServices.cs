@@ -35,8 +35,6 @@ namespace IOT_Project_Services
             return ss;
         }
 
-
-
         public List<BPMSysOURoles> getbind(int id)
         {
             throw new System.NotImplementedException();
