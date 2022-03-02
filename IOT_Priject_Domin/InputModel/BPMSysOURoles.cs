@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -15,8 +16,9 @@ namespace IOT_Priject_Domin.InputModel
     public class BPMSysOURoles
     {
         [Key]
+
     
-    
+       
         public int OUID { get; set; }
         public string RoleName { get; set; }
     }
