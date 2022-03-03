@@ -1,10 +1,16 @@
-﻿using IOT_Priject_Domin.Model;
+﻿using Api.Controllers;
+using BPMAPI.OtherApi;
+using bpmdemoapi.models;
+using IOT_Priject_Domin.InputModel;
+using IOT_Priject_Domin.Model;
 using IOT_Project_IServices;
 using IOT_Project_Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,32 +20,21 @@ namespace IOT_Project_WebAPI.Controllers
     /// 年度计划控制器
     /// </summary>
     [ApiController]
-    public class Annual_PlanController : ControllerBase
+    public class Annual_PlanController : BaseController
     {
-        private readonly Annual_PlanIServices _Year;
-        public Annual_PlanController(Annual_PlanIServices Year)
+        public Annual_PlanController(IConfiguration configuration) : base(configuration)
         {
-            _Year = Year;
         }
         /// <summary>
-        /// 本年预计增加
+        /// 年度计划
         /// </summary>
-        /// <param name="year"></param>
-        /// <returns></returns>
-        [HttpPost,Route("api/ExpectedAdd")]
-        public int ExpectedAdd([FromBody]Expected_increase_this_year year)
+        /// <param name="ResourcesRequirements"></param>
+        [HttpPost, Route("api/StartPlan")]
+        public void StartPlan(InputAnnual_plans annual)
         {
-            return _Year.ExpectedAdd(year);
-        }
-        /// <summary>
-        /// 年度计划添加
-        /// </summary>
-        /// <param name="year"></param>
-        /// <returns></returns>
-        [HttpPost, Route("api/AnnualAdd")]
-        public int AnnualAdd([FromBody] Annual_plan year)
-        {
-            return _Year.AnnualAdd(year);
+            var xml = CollectionToSqlXml<Annual_plan>(annual.Annual_plans);
+            var xml1 = CollectionToSqlXml<Expected_increase_this_year>(annual.IOT_Priject_Domininput);
+            StartProccess(xml+ xml1, annual);
         }
 
         

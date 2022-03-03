@@ -10,9 +10,13 @@ namespace IOT_Priject_Domin.InputModel
 {
     //[NotMapped]
     /// <summary>
-    /// 本年预计增加
+    /// 年度计划表
     /// </summary>
-    public class Expected_increase_this_years : BaseModels
+    public class InputAnnual_plans : BaseModels
+    
     {
-    }
+        public string Annual_plans { get; set; }
+        public string IOT_Priject_Domininput { get; set; }
+    } 
 }
+

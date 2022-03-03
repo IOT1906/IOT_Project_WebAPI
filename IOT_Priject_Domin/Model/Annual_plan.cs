@@ -1,4 +1,5 @@
-﻿using System;
+﻿using bpmdemoapi.models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -11,14 +12,15 @@ namespace IOT_Priject_Domin.Model
     /// <summary>
     /// 年度计划表
     /// </summary>
-    public class Annual_plan
+    public class Annual_plan 
     {
+
         [Key]
         /// <summary>
         /// 年度Id
         /// </summary>
         public int Annualid { get; set; }
-        public int TackId { get; set; }
+        public int TaskId { get; set; }
         /// <summary>
         /// 制表人---自动生成
         /// </summary>

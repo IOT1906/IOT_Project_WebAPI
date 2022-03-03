@@ -1,4 +1,5 @@
-﻿using System;
+﻿using bpmdemoapi.models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace IOT_Priject_Domin.Model
         /// </summary>
         [Key]
         public int YearId { get; set; }
-        public int TackId { get; set; }
+        public int TaskId { get; set; }
         /// <summary>
         /// 岗位---下拉选择
         /// </summary>

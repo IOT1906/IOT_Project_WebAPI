@@ -53,5 +53,23 @@ namespace IOT_Project_MyDB
         /// </summary>
         public DbSet<Leave> Leave { get; set; }
 
+        /// <summary>
+        /// 文件管理
+        /// </summary>
+        public DbSet<Management> Management { get; set; }
+        /// <summary>
+        /// 公告基本信息
+        /// </summary>
+        public DbSet<Notice> Notice { get; set; }
+        /// <summary>
+        /// 刻章申请表
+        /// </summary>
+        public DbSet<Engrave_chapter> Engrave_chapter { get; set; }
+        /// <summary>
+        /// 用章申请表
+        /// </summary>
+        public DbSet<Use_seal> Use_seal { get; set; }
+
+
     }
 }
