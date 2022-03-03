@@ -89,6 +89,18 @@ namespace IOT_Project_MyDB
         /// </summary>
         public DbSet<Leave> Leave { get; set; }
         /// <summary>
+        /// 固定资产购置申请表
+        /// </summary>
+        public DbSet<Acquisitionassets> Acquisitionassets { get; set; }
+        /// <summary>
+        /// 固定资产交接表
+        /// </summary>
+        public DbSet<Connect> Connect { get; set; }
+        /// <summary>
+        /// 固定资产资料借用表
+        /// </summary>
+        public DbSet<Loanrequest> Loanrequest { get; set; }
+        /// <summary>
         /// 离职交接表迁移
         /// </summary>
         public DbSet<HandOver> HandOver { get; set; }
@@ -100,5 +112,24 @@ namespace IOT_Project_MyDB
         /// 员工离职面谈表迁移
         /// </summary>
         public DbSet<Interview> Interview { get; set; }
+
+        /// <summary>
+        /// 文件管理
+        /// </summary>
+        public DbSet<Management> Management { get; set; }
+        /// <summary>
+        /// 公告基本信息
+        /// </summary>
+        public DbSet<Notice> Notice { get; set; }
+        /// <summary>
+        /// 刻章申请表
+        /// </summary>
+        public DbSet<Engrave_chapter> Engrave_chapter { get; set; }
+        /// <summary>
+        /// 用章申请表
+        /// </summary>
+        public DbSet<Use_seal> Use_seal { get; set; }
+
+
     }
 }
