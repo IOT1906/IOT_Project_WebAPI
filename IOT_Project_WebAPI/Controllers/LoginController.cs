@@ -49,7 +49,7 @@ namespace IOT_Project_WebAPI.Controllers
                 log.Password = Password;
                 return Ok(new { token = GetJWT(log), ss = use });
             }
-                return Ok("登录失败"); 
+                return Ok("登录失败");
                
               
         }
