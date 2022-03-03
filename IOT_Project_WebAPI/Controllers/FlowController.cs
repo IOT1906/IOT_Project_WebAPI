@@ -45,8 +45,8 @@ namespace IOT_Project_WebAPI.Controllers
         /// 发起离职审批流程
         /// </summary>
         /// <param name="model"></param>
-        [HttpPost, Route("api/atratleave")]
-        public void atratleave(PlanAll model)
+        [HttpPost, Route("api/atratDep")]
+        public void atratDep(PlanAll model)
         {
             var xml = CollectionToSqlXml<Departure>(model.PlanDate);
             StartProccess(xml, model);
@@ -66,7 +66,7 @@ namespace IOT_Project_WebAPI.Controllers
 
 
         /// <summary>
-        /// 发起日常表单流程
+        /// 发起接待表单流程
         /// </summary>
         /// <param name="model"></param>
 
@@ -79,6 +79,20 @@ namespace IOT_Project_WebAPI.Controllers
             StartProccess(xml + xmls + xmlss, model);
         }
 
+
+
+        [HttpPost, Route("api/evertion")]
+        public void evertion(EvetAll daily)
+        {
+            var xml = CollectionToSqlXml<Daily>(daily.Daily);
+            var xmls = CollectionToSqlXml<Dailydetailed>(daily.Dailydetailed);
+            StartProccess(xml + xmls, daily);
+
+
+
+
+
+        }
 
 
 
