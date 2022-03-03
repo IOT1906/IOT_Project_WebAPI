@@ -44,6 +44,7 @@ namespace IOT_Project_WebAPI.Controllers
         {
             var md = MD5Hash(Password);
             var use = db.BPMSysUsers.FirstOrDefault(c => c.Account == Account & c.Password == md);
+
             if (use != null)
             {
                 BPMSysUsers log = new BPMSysUsers();
@@ -51,11 +52,15 @@ namespace IOT_Project_WebAPI.Controllers
                 log.Password = Password;
                 return Ok(new { token = GetJWT(log), ss = use });
             }
+            else
+            {
                 return Ok("登录失败");
+
+            }
+                
                
               
         }
-
         /// netcore下的实现MD5加密
         /// </summary>
         /// <param name="str"></param>

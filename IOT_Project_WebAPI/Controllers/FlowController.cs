@@ -11,7 +11,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
 namespace IOT_Project_WebAPI.Controllers
 {
 
@@ -19,8 +18,6 @@ namespace IOT_Project_WebAPI.Controllers
     public class FlowController : BaseController
     {
         private IConfiguration configuration;
-      
-
         public FlowController(IConfiguration configuration) : base(configuration)
         {
 
@@ -50,6 +47,17 @@ namespace IOT_Project_WebAPI.Controllers
             var xml = CollectionToSqlXml<ResourcesRequirements>(resourcesRequirements.Resourcesinput);
             StartProccess(xml, resourcesRequirements);
         }
+        /// <summary>
+        /// 年度计划流程
+        /// </summary>
+        /// <param name="ResourcesRequirements"></param>
+        [HttpPost, Route("api/StartPlan")]
+        public void StartPlan(InputAnnual_plans annual)
+        {
+            var xml = CollectionToSqlXml<Annual_plan>(annual.Annual_plans);
+            var xml1 = CollectionToSqlXml<Expected_increase_this_year>(annual.IOT_Priject_Domininput);
+            StartProccess(xml + xml1, annual);
+        }
 
 
         /// <summary>
@@ -71,10 +79,7 @@ namespace IOT_Project_WebAPI.Controllers
 
 
 
-
         //二周流程发起
-
-
 
         /// <summary>
         /// 发起日常表单流程
@@ -127,6 +132,26 @@ namespace IOT_Project_WebAPI.Controllers
 
 
 
+        /// <summary>
+        /// 用章计划流程
+        /// </summary>
+        /// <param name="ResourcesRequirements"></param>
+        [HttpPost, Route("api/Startuse")]
+        public void Startuse(Use_sealinput sealinput)
+        {
+            var xml = CollectionToSqlXml<Use_seal>(sealinput.Use_sealing);
+            StartProccess(xml, sealinput);
+        }
+        /// <summary>
+        /// 刻章计划流程
+        /// </summary>
+        /// <param name="ResourcesRequirements"></param>
+        [HttpPost, Route("api/StartEngrave")]
+        public void StartEngrave(Engrave_chapterinput sealinput)
+        {
+            var xml = CollectionToSqlXml<Engrave_chapter>(sealinput.Engrave);
+            StartProccess(xml, sealinput);
+        }
 
 
     }
