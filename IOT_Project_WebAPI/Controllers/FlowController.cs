@@ -28,7 +28,7 @@ namespace IOT_Project_WebAPI.Controllers
         }
         //第一周流程
 
-        
+
         /// <summary>
         /// 发起请假流程
         /// </summary>
@@ -36,12 +36,20 @@ namespace IOT_Project_WebAPI.Controllers
         [HttpPost, Route("api/startleave")]
         public void StartLeave(PlanAll model)
         {
-            var xml = CollectionToSqlXml<Departure>(model.PlanDate);
+            var xml = CollectionToSqlXml<Leave>(model.PlanDate);
             StartProccess(xml, model);
         }
 
-
-
+        /// <summary>
+        /// 发起离职审批流程
+        /// </summary>
+        /// <param name="model"></param>
+        [HttpPost, Route("api/atratleave")]
+        public void atratleave(PlanAll model)
+        {
+            var xml = CollectionToSqlXml<Departure>(model.PlanDate);
+            StartProccess(xml, model);
+        }
 
 
 
@@ -69,6 +77,9 @@ namespace IOT_Project_WebAPI.Controllers
             var xmlss = CollectionToSqlXml<Receptionbase>(model.Receptionbase);
             StartProccess(xml + xmls + xmlss, model);
         }
+
+
+
 
 
 
