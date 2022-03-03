@@ -18,16 +18,6 @@ namespace IOT_Project_WebAPI.Controllers
         {
 
         }
-        [HttpPost, Route("api/Receleave")]
-        public void Receleave(ReceAll model)
-        {
-            var xml = CollectionToSqlXml<ReceItemDetails>(model.ReceItemDetails);
-            var xmls = CollectionToSqlXml<ReceItineraryDetails>(model.ReceItineraryDetails);
-            var xmlss = CollectionToSqlXml<Receptionbase>(model.Receptionbase);
-            StartProccess(xml+xmls+xmlss, model);
-        }
-
-
 
 
     }

@@ -101,11 +101,11 @@ namespace Api.Controllers
             }
             return xml;
         }
-        ///// <summary>
-        ///// 获取table
-        ///// </summary>
-        ///// <param name="data"></param>
-        ///// <returns></returns>
+        /// <summary>
+        /// 获取table
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         //private static DataSet GetDataSet(Object data)
         //{
         //    Type type = data.GetType();

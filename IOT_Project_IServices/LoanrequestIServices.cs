@@ -7,16 +7,13 @@ using System.Threading.Tasks;
 
 namespace IOT_Project_IServices
 {
-    /// <summary>
-    /// 请假申请服务接口
-    /// </summary>
-    public interface LeaveIservices
+    public interface LoanrequestIServices
     {
         /// <summary>
-        /// 泛型添加操作
+        /// 固定资产资料借用表
         /// </summary>
-        /// <param name="mode"></param>
+        /// <param name="L"></param>
         /// <returns></returns>
-        int Add(Leave mode);
+        int Ladd(Loanrequest L);
     }
 }

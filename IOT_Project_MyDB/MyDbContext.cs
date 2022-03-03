@@ -89,6 +89,18 @@ namespace IOT_Project_MyDB
         /// </summary>
         public DbSet<Leave> Leave { get; set; }
         /// <summary>
+        /// 固定资产购置申请表
+        /// </summary>
+        public DbSet<Acquisitionassets> Acquisitionassets { get; set; }
+        /// <summary>
+        /// 固定资产交接表
+        /// </summary>
+        public DbSet<Connect> Connect { get; set; }
+        /// <summary>
+        /// 固定资产资料借用表
+        /// </summary>
+        public DbSet<Loanrequest> Loanrequest { get; set; }
+        /// <summary>
         /// 离职交接表迁移
         /// </summary>
         public DbSet<HandOver> HandOver { get; set; }

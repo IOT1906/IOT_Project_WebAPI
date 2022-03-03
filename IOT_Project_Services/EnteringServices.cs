@@ -40,13 +40,6 @@ namespace IOT_Project_Services
             throw new System.NotImplementedException();
         }
 
-
-
-        //public List<BPMSysOURoles> getbind(int id)
-        //{
-        //    throw new System.NotImplementedException();
-        //}
-
         //    var ss = (from s in db.BPMSysOURoles select s).ToList().Distinct().ToList();
         //    //  var ss= db.BPMSysOURoles.ToList();
         //    if (id != 0)
