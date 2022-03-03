@@ -25,17 +25,7 @@ namespace IOT_Project_WebAPI.Controllers
         public Annual_PlanController(IConfiguration configuration) : base(configuration)
         {
         }
-        /// <summary>
-        /// 年度计划
-        /// </summary>
-        /// <param name="ResourcesRequirements"></param>
-        [HttpPost, Route("api/StartPlan")]
-        public void StartPlan(InputAnnual_plans annual)
-        {
-            var xml = CollectionToSqlXml<Annual_plan>(annual.Annual_plans);
-            var xml1 = CollectionToSqlXml<Expected_increase_this_year>(annual.IOT_Priject_Domininput);
-            StartProccess(xml+ xml1, annual);
-        }
+        
 
         
 

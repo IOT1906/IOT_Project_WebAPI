@@ -1,8 +1,5 @@
 ﻿using BPMAPI.OtherApi;
 using bpmdemoapi.models;
-
-
-
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System;
@@ -17,7 +14,6 @@ using System.Threading.Tasks;
 using System.Xml;
 
 
-namespace Api.Controllers
 namespace Api.Controllers
 {
 
@@ -50,10 +46,6 @@ namespace Api.Controllers
 
             //先把集合转换成数据表，然后把数据表转换成SQLXML
             return DataTableToSqlXml(CollectionToDataTable(TCollection)).Value.Replace("<DocumentElement>", "").Replace("</DocumentElement>", "");
-
-
-            return DataTableToSqlXml(CollectionToDataTable(TCollection)).Value.Replace("<DocumentElement>", "").Replace("</DocumentElement>", "");
-
         }
         private DataTable CollectionToDataTable<T>(List<T> TCollection)
         {
@@ -143,7 +135,7 @@ namespace Api.Controllers
 
 
 
-        protected Task<int> StartProccess(string formDataSet, BaseModels baseModels)
+       
 
         protected Task<int> StartProccess(string formDataSet, BaseModels baseModels)
         {
