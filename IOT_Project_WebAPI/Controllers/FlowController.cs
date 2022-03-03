@@ -23,9 +23,6 @@ namespace IOT_Project_WebAPI.Controllers
 
         public FlowController(IConfiguration configuration) : base(configuration)
         {
-
-
-
         }
         //第一周流程
 
@@ -37,7 +34,7 @@ namespace IOT_Project_WebAPI.Controllers
         [HttpPost, Route("api/startleave")]
         public void StartLeave(PlanAll model)
         {
-            var xml = CollectionToSqlXml<Departure>(model.PlanDate);
+            var xml = CollectionToSqlXml<Leave>(model.PlanDate);
             StartProccess(xml, model);
         }
 
@@ -71,7 +68,27 @@ namespace IOT_Project_WebAPI.Controllers
             StartProccess(xml + xmls + xmlss, model);
         }
 
+        /// <summary>
+        /// 发起离职交接流程
+        /// </summary>
+        /// <param name="leave"></param>
+        [HttpPost, Route("api/StartHandOver")]
+        public void StartHandOver(PlanAll model)
+        {
+            var xml = CollectionToSqlXml<HandOver>(model.PlanDate);
+            StartProccess(xml, model);
+        }
 
+        /// <summary>
+        /// 发起用车申请流程
+        /// </summary>
+        /// <param name="leave"></param>
+        [HttpPost, Route("api/StartCarapply")]
+        public void StartCarapply(PlanAll model)
+        {
+            var xml = CollectionToSqlXml<Carapply>(model.PlanDate);
+            StartProccess(xml, model);
+        }
 
 
     }

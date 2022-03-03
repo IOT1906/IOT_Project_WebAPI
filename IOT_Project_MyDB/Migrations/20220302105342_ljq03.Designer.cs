@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IOT_Project_MyDB.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20220228120247_V4")]
-    partial class V4
+    [Migration("20220302105342_ljq03")]
+    partial class ljq03
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,65 +20,56 @@ namespace IOT_Project_MyDB.Migrations
                 .HasAnnotation("ProductVersion", "5.0.12")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("IOT_Priject_Domin.Model.ResourcesRequirements", b =>
+            modelBuilder.Entity("IOT_Priject_Domin.Model.Leave", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Age")
+                    b.Property<string>("Action")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Annex")
+                    b.Property<int>("ApplyDemo")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ApplyTime")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Applicationdepartment")
+                    b.Property<string>("BPMUser")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Applicationtime")
+                    b.Property<string>("BPMUserPass")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Contract")
+                    b.Property<int>("Day")
+                        .HasColumnType("int");
+
+                    b.Property<string>("EndDate")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Education")
+                    b.Property<string>("FullName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Jobdescription")
+                    b.Property<string>("LeaveCause")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Jobrequirements")
+                    b.Property<string>("LeaveImg")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Jobtitle")
+                    b.Property<string>("LeaveRemark")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Numberofpeopleonhand")
+                    b.Property<string>("LeaveType")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Numberofrecruits")
+                    b.Property<string>("ProcessName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Other")
+                    b.Property<string>("Proposer")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Probationperiod")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Professionalrequirements")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Reasonforapplication")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Remark")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Salarypackage")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Sex")
+                    b.Property<string>("StartDate")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TaskId")
@@ -86,7 +77,7 @@ namespace IOT_Project_MyDB.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ResourcesRequirements");
+                    b.ToTable("Leave");
                 });
 #pragma warning restore 612, 618
         }

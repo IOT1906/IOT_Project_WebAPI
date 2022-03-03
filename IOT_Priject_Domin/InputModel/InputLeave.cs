@@ -33,7 +33,7 @@ namespace IOT_Priject_Domin.InputModel
         /// <summary>
         /// 申请时间
         /// </summary>
-        public DateTime ApplyTime { get; set; }
+        public string ApplyTime { get; set; }
 
         /// <summary>
         /// 请假类型
@@ -42,11 +42,11 @@ namespace IOT_Priject_Domin.InputModel
         /// <summary>
         /// 请假开始时间
         /// </summary>
-        public DateTime StartDate { get; set; }
+        public string StartDate { get; set; }
         /// <summary>
         /// 请假结束时间
         /// </summary>
-        public DateTime EndDate { get; set; }
+        public string EndDate { get; set; }
         /// <summary>
         /// 请假天数
         /// </summary>
