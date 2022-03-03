@@ -12,19 +12,21 @@ namespace IOT_Priject_Domin.Model
     /// </summary>
     public class Loanrequest : BaseModels
     {
-        /// <summary>
-        /// 申请人
-        /// </summary>
+
         public int Id { get; set; }
         public int Taskid { get; set; }
         /// <summary>
+        /// 申请人
+        /// </summary>
+        public int Applicant { get; set; }
+        /// <summary>
         /// 申请部门
         /// </summary>
-        public string Applicant { get; set; }
+        public string Applicationdepartment { get; set; }
         /// <summary>
         /// 申请日期
         /// </summary>
-        public string Applicationdepartment { get; set; }
+        public string Dateofapplication { get; set; }
         /// <summary>
         /// 归还日期
         /// </summary>

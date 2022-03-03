@@ -12,6 +12,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using System.Security.Cryptography;
 
 namespace IOT_Project_WebAPI.Controllers
 {
@@ -40,7 +41,8 @@ namespace IOT_Project_WebAPI.Controllers
         [Route("api/Login")]
         public ActionResult BPMSysUsers(string Account, string Password)
         {
-            var use = db.BPMSysUsers.FirstOrDefault(c => c.Account == Account & c.Password == Password);
+            var md = MD5Hash(Password);
+            var use = db.BPMSysUsers.FirstOrDefault(c => c.Account == Account & c.Password == md);
 
             if (use != null)
             {
@@ -49,11 +51,28 @@ namespace IOT_Project_WebAPI.Controllers
                 log.Password = Password;
                 return Ok(new { token = GetJWT(log), ss = use });
             }
+            else
+            {
                 return Ok("登录失败");
+
+            }
+                
                
               
         }
-
+        /// netcore下的实现MD5加密
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static string MD5Hash(string input)
+        {
+            using (var md5 = MD5.Create())
+            {
+                var result = md5.ComputeHash(Encoding.ASCII.GetBytes(input));
+                var strResult = BitConverter.ToString(result);
+                return strResult.Replace("-", "");
+            }
+        }
 
 
         /// <summary>
