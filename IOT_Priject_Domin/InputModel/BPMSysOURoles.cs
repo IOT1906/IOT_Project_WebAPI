@@ -16,8 +16,9 @@ namespace IOT_Priject_Domin.InputModel
     public class BPMSysOURoles
     {
         [Key]
+
     
-    
+       
         public int OUID { get; set; }
         public string RoleName { get; set; }
     }

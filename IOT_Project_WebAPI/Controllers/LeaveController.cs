@@ -1,9 +1,13 @@
-﻿using IOT_Priject_Domin.Model;
+﻿using BPMAPI.OtherApi;
+using bpmdemoapi.models;
+using IOT_Priject_Domin.Model;
 using IOT_Project_IServices;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -16,10 +20,11 @@ namespace IOT_Project_WebAPI.Controllers
     public class LeaveController : ControllerBase
     {
         private readonly LeaveIservices db;
-
-        public LeaveController(LeaveIservices db)
+        private IConfiguration configuration;
+        public LeaveController(LeaveIservices db, IConfiguration configuration)
         {
             this.db = db;
+            this.configuration = configuration;
         }
         /// <summary>
         /// Leave 添加
@@ -32,5 +37,9 @@ namespace IOT_Project_WebAPI.Controllers
         {
             return Ok(db.Add(leave));
         }
+
+
+      
+
     }
 }

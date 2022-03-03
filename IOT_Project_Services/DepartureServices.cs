@@ -19,9 +19,6 @@ namespace IOT_Project_Services
         {
             _Dep = Dep;
         }
-        public int DepAdd(Departure Del)
-        {
-            return _Dep.Add(Del);
-        }
+       
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using bpmdemoapi.models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace IOT_Priject_Domin.Model
 {
-    public class Departure
+    public class Departure: BaseModels
     {
         [Key]
         /// <summary>
@@ -29,7 +30,7 @@ namespace IOT_Priject_Domin.Model
         /// <summary>
         /// 申请日期-自动填写
         /// </summary>
-        public DateTime DepTime { get; set; } = new DateTime();
+        public DateTime DepTime { get; set; } 
         /// <summary>
         ///职位-带出当前登录人员账号不可填写
         /// </summary>

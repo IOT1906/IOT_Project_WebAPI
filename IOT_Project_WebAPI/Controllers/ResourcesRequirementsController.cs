@@ -1,9 +1,15 @@
-﻿using IOT_Priject_Domin.Model;
+﻿using Api.Controllers;
+using BPMAPI.OtherApi;
+using bpmdemoapi.models;
+using IOT_Priject_Domin.InputModel;
+using IOT_Priject_Domin.Model;
 using IOT_Project_IServices;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,23 +19,24 @@ namespace IOT_Project_WebAPI.Controllers
     /// 人力资源控制器
     /// </summary>
     [ApiController]
-    public class ResourcesRequirementsController : ControllerBase
+    public class ResourcesRequirementsController : BaseController
     {
-        private readonly ResourcesRequirementsIServices db;
-        public ResourcesRequirementsController(ResourcesRequirementsIServices _db) 
+       
+        public ResourcesRequirementsController(IConfiguration configuration) :base(configuration)
         {
-            this.db = _db;
         }
+
         /// <summary>
-        /// 人力资源申请方法
+        /// 发起人力资源申请
         /// </summary>
-        /// <param name="R"></param>
-        /// <returns></returns>
-        [HttpPost]
-        [Route("Radd")]
-        public ActionResult Radd(ResourcesRequirements R) 
+        /// <param name="ResourcesRequirements"></param>
+        [HttpPost, Route("api/RAdd")]
+        public void RAdd(Resources_Requirements resourcesRequirements)
         {
-            return Ok(db.Radd(R));
+            var xml = CollectionToSqlXml<ResourcesRequirements>(resourcesRequirements.Resourcesinput);
+            StartProccess(xml, resourcesRequirements);
         }
+
+
     }
 }

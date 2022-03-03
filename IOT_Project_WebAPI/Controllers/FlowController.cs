@@ -1,79 +1,78 @@
-﻿using BPMAPI.OtherApi;
+﻿using Api.Controllers;
+using BPMAPI.OtherApi;
 using bpmdemoapi.models;
-
+using IOT_Priject_Domin.InputModel;
+using IOT_Priject_Domin.InputModels;
 using IOT_Priject_Domin.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System;
-using System.Data;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
-/// <summary>
-/// 流程控制器
-/// </summary>
-namespace Project.Controllers
+namespace IOT_Project_WebAPI.Controllers
 {
+
     [ApiController]
-    public class FlowController :ControllerBase
+    public class FlowController : BaseController
     {
         private IConfiguration configuration;
-        public FlowController(IConfiguration configuration)
-        {
-            this.configuration = configuration;
-        }
+      
 
+        public FlowController(IConfiguration configuration) : base(configuration)
+        {
+
+
+
+        }
+        //第一周流程
+
+        
         /// <summary>
-        /// 发起流程
+        /// 发起请假流程
         /// </summary>
         /// <param name="leave"></param>
-        [HttpPost, Route("api/startdeparture")]
-        public void StartLeave(Departure departure)
+        [HttpPost, Route("api/startleave")]
+        public void StartLeave(PlanAll model)
         {
-            StartProccess<Departure>(departure);
+            var xml = CollectionToSqlXml<Departure>(model.PlanDate);
+            StartProccess(xml, model);
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //二周流程发起
+
+
+
         /// <summary>
-        /// 获取table
+        /// 发起日常表单流程
         /// </summary>
-        /// <param name="data"></param>
-        /// <returns></returns>
-        private DataSet GetDataSet(Object data)
-        {
-            Type type = data.GetType();
-            DataSet formDataSet = new DataSet("FormData");
+        /// <param name="model"></param>
 
-            DataTable table = new DataTable(type.Name);
-            string IsNotField = "Action,BPMUser,BPMUserPass,FullName,ProcessName";
-            foreach (var property in type.GetProperties())
-            {
-                if (!IsNotField.Contains(property.Name))
-                    table.Columns.Add(new DataColumn(property.Name, property.PropertyType));
-            }
-            DataRow add_row = table.NewRow();
-            foreach (var property in type.GetProperties())
-            {
-                if (!IsNotField.Contains(property.Name))
-                    add_row[property.Name] = property.GetValue(data);
-            }
-            table.Rows.Add(add_row);
-            formDataSet.Tables.Add(table);
-            return formDataSet;
-        }
-        //
-        private Task<int> StartProccess<T>(T leaveNew) where T : BaseModels, new()
+        [HttpPost, Route("api/Reception")]
+        public void Reception(ReceAll model)
         {
-            string formDataSet = ConvertXML.ConvertDataSetToXML(GetDataSet(leaveNew));
-            BPMModels models = new BPMModels(configuration)
-            {
-                Action = leaveNew.Action,
-
-                BPMUser = leaveNew.BPMUser,
-                BPMUserPass = leaveNew.BPMUserPass,
-                FormDataSet = formDataSet,
-                FullName = leaveNew.FullName,
-                ProcessName = leaveNew.ProcessName
-            };
-            return new MyClientApi().OptClientApi(models.BpmServerUrl, models);
+            var xml = CollectionToSqlXml<ReceItemDetails>(model.ReceItemDetails);
+            var xmls = CollectionToSqlXml<ReceItineraryDetails>(model.ReceItineraryDetails);
+            var xmlss = CollectionToSqlXml<Receptionbase>(model.Receptionbase);
+            StartProccess(xml + xmls + xmlss, model);
         }
+
+
+
+
     }
 }

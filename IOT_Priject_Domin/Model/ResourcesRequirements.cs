@@ -1,5 +1,7 @@
-﻿using System;
+﻿using bpmdemoapi.models;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -11,10 +13,12 @@ namespace IOT_Priject_Domin.Model
     /// <summary>
     /// EF迁移人力资源需求
     /// </summary>
-    public class ResourcesRequirements
+    public class ResourcesRequirements : BaseModels
     {
+        [Key]
         public int Id { get; set; }
 
+        public int TaskId { get; set; }
         /// <summary>
         /// 申请部门  自动生成申请部门不可填写
         /// </summary>

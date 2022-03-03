@@ -1,6 +1,8 @@
 ﻿using BPMAPI.OtherApi;
 using bpmdemoapi.models;
 
+
+
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System;
@@ -14,8 +16,12 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml;
 
+
+namespace Api.Controllers
 namespace Api.Controllers
 {
+
+
 
     public class BaseController
     {
@@ -34,12 +40,18 @@ namespace Api.Controllers
                 TCollection = JsonConvert.DeserializeObject<List<T>>(json);
             }
 
+
+
             else
             {
                 TCollection = JsonConvert.DeserializeObject<List<T>>("[" + json + "]");
             }
 
+
             //先把集合转换成数据表，然后把数据表转换成SQLXML
+            return DataTableToSqlXml(CollectionToDataTable(TCollection)).Value.Replace("<DocumentElement>", "").Replace("</DocumentElement>", "");
+
+
             return DataTableToSqlXml(CollectionToDataTable(TCollection)).Value.Replace("<DocumentElement>", "").Replace("</DocumentElement>", "");
 
         }
@@ -95,21 +107,24 @@ namespace Api.Controllers
             }
             return xml;
         }
-        ///// <summary>
-        ///// 获取table
-        ///// </summary>
-        ///// <param name="data"></param>
-        ///// <returns></returns>
+        /// <summary>
+        /// 获取table
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         //private static DataSet GetDataSet(Object data)
         //{
         //    Type type = data.GetType();
 
+
         //    DataSet formDataSet = new DataSet("FormData");
+
 
         //    DataTable table = new DataTable(type.Name);
         //    string IsNotField = "Action,BPMUser,BPMUserPass,FullName,ProcessName";
         //    foreach (var property in type.GetProperties())
         //    {
+
 
         //        if (!IsNotField.Contains(property.Name))
         //            table.Columns.Add(new DataColumn(property.Name, property.PropertyType));
@@ -126,13 +141,21 @@ namespace Api.Controllers
         //}
 
 
+
+
+        protected Task<int> StartProccess(string formDataSet, BaseModels baseModels)
+
         protected Task<int> StartProccess(string formDataSet, BaseModels baseModels)
         {
+
+
+
 
 
             BPMModels models = new BPMModels(configuration)
             {
                 Action = baseModels.Action,
+
 
                 BPMUser = baseModels.BPMUser,
                 BPMUserPass = baseModels.BPMUserPass,
@@ -142,5 +165,7 @@ namespace Api.Controllers
             };
             return MyClientApi.OptClientApi(models.BpmServerUrl, models);
         }
+
+       
     }
 }
