@@ -12,19 +12,20 @@ namespace IOT_Priject_Domin.Model
     /// </summary>
     public class Connect : BaseModels
     {
-        /// <summary>
-        /// 申请人
-        /// </summary>
         public int Id { get; set; }
         public int Taskid { get; set; }
         /// <summary>
-        /// 申请部门
+        /// 申请人
         /// </summary>
         public string Applicant { get; set; }
         /// <summary>
-        /// 申请日期
+        /// 申请部门
         /// </summary>
         public string Applicationdepartment { get; set; }
+        /// <summary>
+        /// 申请日期
+        /// </summary>
+        public string Dateofapplication { get; set; }
         /// <summary>
         /// 交接表单
         /// </summary>
