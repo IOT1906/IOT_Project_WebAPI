@@ -1,5 +1,6 @@
 ﻿using BPMAPI.OtherApi;
 using bpmdemoapi.models;
+using IOT_Priject_Domin.InputModel;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System;
@@ -139,25 +140,77 @@ namespace Api.Controllers
 
         protected Task<int> StartProccess(string formDataSet, BaseModels baseModels)
         {
-
-
-
-
-
             BPMModels models = new BPMModels(configuration)
             {
                 Action = baseModels.Action,
-
-
                 BPMUser = baseModels.BPMUser,
                 BPMUserPass = baseModels.BPMUserPass,
                 FormDataSet = "<FormData>" + formDataSet + "</FormData>",
                 FullName = baseModels.FullName,
                 ProcessName = baseModels.ProcessName
             };
-            return MyClientApi.OptClientApi(models.BpmServerUrl, models);
+            return MyClientApi.OptClientApi(models.BpmServerUrl + "StartBPM", models);
         }
+        
+        /// <summary>
+        /// 审批流程
+        /// </summary>
+        /// <param name="formDataSet"></param>
+        /// <param name="baseModels"></param>
+        /// <returns></returns>
+        
+        protected Task<int> Startstuss(chooseinput baseModels)
+        {
+            BPMModels models = new BPMModels(configuration)
+            {
+                Action = baseModels.Action,
+                BPMUser = baseModels.BPMUser,
+                BPMUserPass = baseModels.BPMUserPass,
+                FormDataSet = baseModels.ProcessName,
+                StepId = baseModels.StepID,
+                Comments = baseModels.Comments
+            };
+            return MyClientApi.OptClientApi(models.BpmServerUrl + "approve", models);
+        }
+        /// <summary>
+        /// 拒绝流程
+        /// </summary>
+        /// <param name="formDataSet"></param>
+        /// <param name="baseModels"></param>
+        /// <returns></returns>
 
-       
+        protected Task<int> NOStarts(chooseinput baseModels)
+        {
+            BPMModels models = new BPMModels(configuration)
+            {
+                Action = baseModels.Action,
+                BPMUser = baseModels.BPMUser,
+                BPMUserPass = baseModels.BPMUserPass,
+                FormDataSet = baseModels.ProcessName,
+                StepId = baseModels.StepID,
+                Comments = baseModels.Comments
+            };
+            return MyClientApi.OptClientApi(models.BpmServerUrl + "Reject", models);
+        }
+        /// <summary>
+        /// 反填流程
+        /// </summary>
+        /// <param name="formDataSet"></param>
+        /// <param name="baseModels"></param>
+        /// <returns></returns>
+
+        protected Task<int> Startsfan(chooseinput baseModels)
+        {
+            BPMModels models = new BPMModels(configuration)
+            {
+                Action = baseModels.Action,
+                BPMUser = baseModels.BPMUser,
+                BPMUserPass = baseModels.BPMUserPass,
+                FormDataSet = baseModels.ProcessName,
+                StepId = baseModels.StepID,
+                Comments = baseModels.Comments
+            };
+            return MyClientApi.OptClientApi(models.BpmServerUrl + "RecedeRestart", models);
+        }
     }
 }

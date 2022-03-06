@@ -58,8 +58,33 @@ namespace IOT_Project_WebAPI.Controllers
             var xml1 = CollectionToSqlXml<Expected_increase_this_year>(annual.IOT_Priject_Domininput);
             StartProccess(xml + xml1, annual);
         }
-
-
+        /// <summary>
+        /// 审批流程
+        /// </summary>
+        /// <param name="ResourcesRequirements"></param>
+        [HttpPost, Route("api/Startag")]
+        public void Startag(chooseinput annual)
+        {
+            Startstuss(annual);
+        }
+        /// <summary>
+        /// 拒绝流程
+        /// </summary>
+        /// <param name="ResourcesRequirements"></param>
+        [HttpPost, Route("api/StartagNO")]
+        public void StartagNO(chooseinput annual)
+        {
+            NOStarts(annual);
+        }
+        /// <summary>
+        /// 反填流程
+        /// </summary>
+        /// <param name="ResourcesRequirements"></param>
+        [HttpPost, Route("api/Startagupt")]
+        public void Startagupt(chooseinput annual)
+        {
+            Startsfan(annual);
+        }
         /// <summary>
         /// 发起离职审批流程
         /// </summary>

@@ -26,7 +26,7 @@ namespace IOT_Priject_Domin.Model
         /// <summary>
         /// 上年已有---手动输入
         /// </summary>
-        public string Last_year { get; set; }
+        //public string Last_year { get; set; }
         /// <summary>
         /// 一月份---手动输入
         /// </summary>

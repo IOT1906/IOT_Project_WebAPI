@@ -22,12 +22,73 @@ namespace IOT_Project_WebAPI.Controllers
     [ApiController]
     public class Annual_PlanController : BaseController
     {
-        public Annual_PlanController(IConfiguration configuration) : base(configuration)
+        private readonly Annual_PlanIServices db;
+        public Annual_PlanController(Annual_PlanIServices _db,IConfiguration configuration) : base(configuration)
         {
+            db = _db;
         }
-        
+        /// <summary>
+        /// 本年预计增加
+        /// </summary>
+        /// <param name = "year" ></ param >
+        /// < returns ></ returns >
+        [HttpPost,Route("api/ExpectedAdd")]
+        public int ExpectedAdd(Expected_increase_this_year year)
+        {
+            return db.ExpectedAdd(year);
+        }
+        /// <summary>
+        /// 年度计划增加
+        /// </summary>
+        /// <param name = "year" ></ param >
+        /// < returns ></ returns >
+        [HttpPost, Route("api/AnnualAdd")]
+        public int AnnualAdd(Annual_plan year)
+        {
+            return db.AnnualAdd(year);
+        }
+        /// <summary>
+        /// 公告基本信息增加
+        /// </summary>
+        /// <param name="year"></param>
+        /// <returns></returns>
+        [HttpPost, Route("api/NoticeAdd")]
+        public int NoticeAdd(Notice tice)
+        {
+            return db.NoticeAdd(tice);
+        }
+        /// <summary>
+        /// 文件管理增加
+        /// </summary>
+        /// <param name="year"></param>
+        /// <returns></returns>
+        [HttpPost, Route("api/ManagementAdd")]
+        public int ManagementAdd(Management manage)
+        {
+            return db.ManagementAdd(manage);
+        }
+        /// <summary>
+        /// 刻章申请增加
+        /// </summary>
+        /// <param name="year"></param>
+        /// <returns></returns>
+        [HttpPost, Route("api/EngraveAdd")]
+        public int EngraveAdd(Engrave_chapter chapter)
+        {
+            return db.EngraveAdd(chapter);
+        }
+        /// <summary>
+        /// 用章申请增加
+        /// </summary>
+        /// <param name="year"></param>
+        /// <returns></returns>
+        [HttpPost, Route("api/UseAdd")]
+        public int UseAdd(Use_seal seal)
+        {
+            return db.UseAdd(seal);
+        }
 
-        
+
 
     }
 }
