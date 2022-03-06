@@ -50,6 +50,7 @@ namespace bpmdemoapi.models
         /// </summary>
         public string FormDataSet { get; set; }
         public string BpmServerUrl { get { return configuration.GetSection("bpmServerUrl").Value; } }
+
         /// <summary>
         /// 流程ID
         /// </summary>
@@ -61,6 +62,11 @@ namespace bpmdemoapi.models
         /// <summary>
         /// 意见
         /// </summary>
+        public string Comments { get; set; }
+
+        public int TaskId { get; set; }
+
+        public int StepId { get; set; }
         public string Comments { get; set; }
     }
 }

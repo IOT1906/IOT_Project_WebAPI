@@ -17,7 +17,7 @@ namespace IOT_Priject_Domin.Model
         /// Id
         /// </summary>
         public int Id { get; set; }
-        public int Taskid { get; set; }
+        public int TaskId { get; set; }
         /// <summary>
         /// 申请人 当前申请人反填不可手填
         /// </summary>

@@ -18,7 +18,7 @@ namespace IOT_Priject_Domin.Model
         /// <summary>
         /// 申请人
         /// </summary>
-        public int Applicant { get; set; }
+        public string Applicant { get; set; }
         /// <summary>
         /// 申请部门
         /// </summary>

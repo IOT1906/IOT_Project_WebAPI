@@ -1,5 +1,4 @@
-﻿using bpmdemoapi.models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +7,9 @@ using System.Threading.Tasks;
 namespace IOT_Priject_Domin.Model
 {
     /// <summary>
-    /// 固定资产交接表
+    /// 固定资产验收单
     /// </summary>
-    public class Connect : BaseModels
+    public class Assetacceptance
     {
         public int Id { get; set; }
         public int Taskid { get; set; }
@@ -27,28 +26,33 @@ namespace IOT_Priject_Domin.Model
         /// </summary>
         public string Dateofapplication { get; set; }
         /// <summary>
-        /// 交接表单
-        /// </summary>
-        public string Handoverform { get; set; }
-        /// <summary>
         /// 资产编号
         /// </summary>
         public string Assetnumber { get; set; }
         /// <summary>
-        /// 资产名称
+        /// 资产类别
         /// </summary>
-        public string Assetname { get; set; }
+        public string Assetclass { get; set; }
         /// <summary>
-        /// 交接人
+        /// 存放地点
         /// </summary>
-        public string Handover { get; set; }
+        public string Storagelocation { get; set; }
         /// <summary>
-        /// 交接人部门
+        /// 申购单号
         /// </summary>
-        public string Handoverdepartment { get; set; }
+        public string Number { get; set; }
         /// <summary>
-        /// 备注
+        /// 所属项目
         /// </summary>
-        public string Remark { get; set; }
+        public string Project { get; set; }
+        /// <summary>
+        /// 使用人
+        /// </summary>
+        public string User { get; set; }
+        /// <summary>
+        /// 所属部门
+        /// </summary>
+        public string Department { get; set; }
+
     }
 }

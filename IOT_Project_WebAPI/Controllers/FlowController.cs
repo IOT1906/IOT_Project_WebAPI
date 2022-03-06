@@ -4,6 +4,8 @@ using bpmdemoapi.models;
 using IOT_Priject_Domin.InputModel;
 using IOT_Priject_Domin.InputModels;
 using IOT_Priject_Domin.Model;
+using IOT_Priject_Domin.OutPutModel;
+using IOT_Project_MyDB;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -11,6 +13,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApplication1;
+
 namespace IOT_Project_WebAPI.Controllers
 {
 
@@ -18,12 +22,13 @@ namespace IOT_Project_WebAPI.Controllers
     public class FlowController : BaseController
     {
         private IConfiguration configuration;
+        
         public FlowController(IConfiguration configuration) : base(configuration)
         {
-
-
-
         }
+
+
+
         //第一周流程
 
 
@@ -38,8 +43,27 @@ namespace IOT_Project_WebAPI.Controllers
             StartProccess(xml, model);
         }
         /// <summary>
-        /// 发起人力资源申请
+        /// 审批流程
         /// </summary>
+        /// <param name="leave"></param>
+        [HttpPost, Route("api/StartAuitp")]
+        public void StartAuitp(chooseinput baseModels)
+        {
+            StartAudit(baseModels);
+        }
+        ///// <summary>
+        ///// 拒绝流程
+        ///// </summary>
+        ///// <param name="leave"></param>
+        //[HttpPost, Route("api/StartTurn")]
+        //public void StartTurn(chooseinput baseModels)
+        //{
+        //    StartDown(baseModels);
+        //}
+
+        /// <summary>
+        /// 发起人力资源申请
+        /// </summary>resourcesinput
         /// <param name="ResourcesRequirements"></param>
         [HttpPost, Route("api/RAdd")]
         public void RAdd(Resources_Requirements resourcesRequirements)
@@ -89,14 +113,33 @@ namespace IOT_Project_WebAPI.Controllers
         /// 发起离职审批流程
         /// </summary>
         /// <param name="model"></param>
-        [HttpPost, Route("api/atratleave")]
-        public void atratleave(PlanAll model)
+        [HttpPost, Route("api/atratDep")]
+        public void atratDep(PlanAll model)
         {
             var xml = CollectionToSqlXml<Departure>(model.PlanDate);
             StartProccess(xml, model);
         }
 
+        
 
+        /// <summary>
+        /// 同意
+        /// </summary>
+        /// <param name="Stp"></param>
+        [HttpPost, Route("api/StepatratDep")]
+        public void StepatratDep(StepModels Stp)
+        {
+            yesProccess(Stp);
+        }
+        /// <summary>
+        /// 拒绝
+        /// </summary>
+        /// <param name="Stp"></param>
+        [HttpPost, Route("api/TaskDep")]
+        public void TaskDep(TaskModel Tasks)
+        {
+            NoProccess(Tasks);
+        }
 
 
 
@@ -107,7 +150,7 @@ namespace IOT_Project_WebAPI.Controllers
         //二周流程发起
 
         /// <summary>
-        /// 发起日常表单流程
+        /// 发起接待表单流程
         /// </summary>
         /// <param name="model"></param>
 
@@ -117,8 +160,9 @@ namespace IOT_Project_WebAPI.Controllers
             var xml = CollectionToSqlXml<ReceItemDetails>(model.ReceItemDetails);
             var xmls = CollectionToSqlXml<ReceItineraryDetails>(model.ReceItineraryDetails);
             var xmlss = CollectionToSqlXml<Receptionbase>(model.Receptionbase);
-            StartProccess(xml + xmls + xmlss, model);
+            StartProccess(xmlss + xmls +xml , model);
         }
+
         /// <summary>
         /// 固定资产资料借用
         /// </summary>
@@ -126,7 +170,7 @@ namespace IOT_Project_WebAPI.Controllers
         [HttpPost, Route("api/Loanrequest")]
         public void Loanrequest(Loanrequests oanrequest)
         {
-            var xml = CollectionToSqlXml<Loanrequests>(oanrequest.loanrequests);
+            var xml = CollectionToSqlXml<Loanrequest>(oanrequest.loanrequests);
             StartProccess(xml,oanrequest);
         }
 
@@ -151,8 +195,63 @@ namespace IOT_Project_WebAPI.Controllers
             var xml = CollectionToSqlXml<Connect>(connect.connect);
             StartProccess(xml,connect);
         }
+        /// <summary>
+        /// 固定资产交接审批
+        /// </summary>
+        /// <param name="Connect"></param>
+        [HttpPost, Route("api/Connectsp")]
+        public void Connectsp(chooseinput baseModels)
+        {
+            StartPs(baseModels);
+        }
+        /// <summary>
+        /// 固定资产交接驳回
+        /// </summary>
+        /// <param name="Connect"></param>
+        [HttpPost, Route("api/Connectbh")]
+        public void Connectbh(chooseinput baseModels)
+        {
+            StartP(baseModels);
+        }
+
+        /// <summary>
+        /// 发起离职交接流程
+        /// </summary>
+        /// <param name="leave"></param>
+        [HttpPost, Route("api/StartHandOver")]
+        public void StartHandOver(PlanAll model)
+        {
+            var xml = CollectionToSqlXml<HandOver>(model.PlanDate);
+            StartProccess(xml, model);
+        }
+
+        /// <summary>
+        /// 发起用车申请流程
+        /// </summary>
+        /// <param name="leave"></param>
+        [HttpPost, Route("api/StartCarapply")]
+        public void StartCarapply(PlanAll model)
+        {
+            var xml = CollectionToSqlXml<Carapply>(model.PlanDate);
+            StartProccess(xml, model);
+        }
+
+        /// <summary>
+        /// 日常用品采购申请单
+        /// </summary>
+        /// <param name="daily"></param>
+        [HttpPost, Route("api/evertion")]
+        public void evertion(EvetAll daily)
+        {
+            var xml = CollectionToSqlXml<Daily>(daily.Daily);
+            var xmls = CollectionToSqlXml<Dailydetailed>(daily.Dailydetailed);
+            StartProccess(xml + xmls, daily);
 
 
+
+
+
+        }
 
 
 

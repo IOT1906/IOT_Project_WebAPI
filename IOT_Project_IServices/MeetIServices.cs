@@ -7,16 +7,13 @@ using System.Threading.Tasks;
 
 namespace IOT_Project_IServices
 {
-    /// <summary>
-    /// 请假申请服务接口
-    /// </summary>
-    public interface LeaveIservices
+   public  interface MeetIServices
     {
         /// <summary>
-        /// 泛型添加操作
+        /// 新增会议室服务接口
         /// </summary>
-        /// <param name="mode"></param>
+        /// <param name="meeting"></param>
         /// <returns></returns>
-        int Add(Interview mode);
+        int MeetAdd(Meeting meeting);
     }
 }
