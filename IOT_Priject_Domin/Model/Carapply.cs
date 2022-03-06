@@ -20,7 +20,7 @@ namespace IOT_Priject_Domin.Model
         /// <summary>
         /// 用车申请表——TaskId
         /// </summary>
-        public int CarapplyTaskId { get; set; }
+        public int TaskId { get; set; }
 
 
         /// <summary>

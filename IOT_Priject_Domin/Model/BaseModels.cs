@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace bpmdemoapi.models
 {
-    [NotMapped]
+    //[NotMapped]
     public class BaseModels
     {
         
@@ -16,6 +16,7 @@ namespace bpmdemoapi.models
         public string BPMUserPass { get; set; }
         public string FullName { get; set; }
         public string ProcessName { get; set; }
+
 
 
     }

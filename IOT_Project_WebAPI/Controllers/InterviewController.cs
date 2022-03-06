@@ -14,28 +14,28 @@ using System.Threading.Tasks;
 namespace IOT_Project_WebAPI.Controllers
 {
     /// <summary>
-    /// 请假控制器
+    /// 离职面谈控制器
     /// </summary>
     [ApiController]
-    public class LeaveController : ControllerBase
+    public class InterviewController : ControllerBase
     {
         private readonly LeaveIservices db;
         private IConfiguration configuration;
-        public LeaveController(LeaveIservices db, IConfiguration configuration)
+        public InterviewController(LeaveIservices db, IConfiguration configuration)
         {
             this.db = db;
             this.configuration = configuration;
         }
         /// <summary>
-        /// Leave 添加
+        /// Interview 添加
         /// </summary>
         /// <param name = "leave" ></ param >
         /// < returns ></ returns >
         [HttpPost]
-        [Route("api/LeaveAdd")]
-        public IActionResult LeaveAdd([FromBody] Leave leave)
+        [Route("api/InterviewAdd")]
+        public IActionResult InterviewAdd([FromBody] Interview ljq)
         {
-            return Ok(db.Add(leave));
+            return Ok(db.Add(ljq));
         }
 
 

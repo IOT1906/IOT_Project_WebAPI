@@ -35,6 +35,25 @@ namespace IOT_Project_WebAPI.Controllers
             StartProccess(xml, model);
         }
         /// <summary>
+        /// 审批流程
+        /// </summary>
+        /// <param name="leave"></param>
+        [HttpPost, Route("api/StartAuitp")]
+        public void StartAuitp(chooseinput baseModels)
+        {
+            StartAudit(baseModels);
+        }
+        ///// <summary>
+        ///// 拒绝流程
+        ///// </summary>
+        ///// <param name="leave"></param>
+        //[HttpPost, Route("api/StartTurn")]
+        //public void StartTurn(chooseinput baseModels)
+        //{
+        //    StartDown(baseModels);
+        //}
+
+        /// <summary>
         /// 发起人力资源申请
         /// </summary>resourcesinput
         /// <param name="ResourcesRequirements"></param>
