@@ -43,8 +43,27 @@ namespace IOT_Project_WebAPI.Controllers
             StartProccess(xml, model);
         }
         /// <summary>
-        /// 发起人力资源申请
+        /// 审批流程
         /// </summary>
+        /// <param name="leave"></param>
+        [HttpPost, Route("api/StartAuitp")]
+        public void StartAuitp(chooseinput baseModels)
+        {
+            StartAudit(baseModels);
+        }
+        ///// <summary>
+        ///// 拒绝流程
+        ///// </summary>
+        ///// <param name="leave"></param>
+        //[HttpPost, Route("api/StartTurn")]
+        //public void StartTurn(chooseinput baseModels)
+        //{
+        //    StartDown(baseModels);
+        //}
+
+        /// <summary>
+        /// 发起人力资源申请
+        /// </summary>resourcesinput
         /// <param name="ResourcesRequirements"></param>
         [HttpPost, Route("api/RAdd")]
         public void RAdd(Resources_Requirements resourcesRequirements)
@@ -126,7 +145,7 @@ namespace IOT_Project_WebAPI.Controllers
         [HttpPost, Route("api/Loanrequest")]
         public void Loanrequest(Loanrequests oanrequest)
         {
-            var xml = CollectionToSqlXml<Loanrequests>(oanrequest.loanrequests);
+            var xml = CollectionToSqlXml<Loanrequest>(oanrequest.loanrequests);
             StartProccess(xml,oanrequest);
         }
 
@@ -150,6 +169,24 @@ namespace IOT_Project_WebAPI.Controllers
         {
             var xml = CollectionToSqlXml<Connect>(connect.connect);
             StartProccess(xml,connect);
+        }
+        /// <summary>
+        /// 固定资产交接审批
+        /// </summary>
+        /// <param name="Connect"></param>
+        [HttpPost, Route("api/Connectsp")]
+        public void Connectsp(chooseinput baseModels)
+        {
+            StartPs(baseModels);
+        }
+        /// <summary>
+        /// 固定资产交接驳回
+        /// </summary>
+        /// <param name="Connect"></param>
+        [HttpPost, Route("api/Connectbh")]
+        public void Connectbh(chooseinput baseModels)
+        {
+            StartP(baseModels);
         }
 
         /// <summary>

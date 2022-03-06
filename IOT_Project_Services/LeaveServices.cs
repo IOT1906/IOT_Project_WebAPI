@@ -10,21 +10,21 @@ using System.Threading.Tasks;
 namespace IOT_Project_Services
 {
     // <summary>
-    /// 继承请假申请服务接口
+    /// 继承员工面谈申请服务接口
     /// </summary>
     public class LeaveServices : LeaveIservices
     {
-        private readonly IRepository<Leave> db;
-        public LeaveServices(IRepository<Leave> db)
+        private readonly IRepository<Interview> db;
+        public LeaveServices(IRepository<Interview> db)
         {
             this.db = db;
         }
         /// <summary>
-        /// 请假提交申请
+        /// 员工面谈提交申请
         /// </summary>
         /// <param name="mode"></param>
         /// <returns></returns>
-        public int Add(Leave mode)
+        public int Add(Interview mode)
         {
             return db.Add(mode);
         }

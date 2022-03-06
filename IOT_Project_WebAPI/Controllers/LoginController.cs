@@ -22,6 +22,7 @@ namespace IOT_Project_WebAPI.Controllers
     [ApiController]
     public class LoginController : ControllerBase
     {
+
         private readonly IConfiguration configuration;
         private readonly MyDbContext db;
         public LoginController(IConfiguration configuration, MyDbContext db)

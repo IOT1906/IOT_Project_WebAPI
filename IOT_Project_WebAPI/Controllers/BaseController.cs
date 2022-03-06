@@ -156,6 +156,45 @@ namespace Api.Controllers
                 FullName = baseModels.FullName,
                 ProcessName = baseModels.ProcessName
             };
+            return MyClientApi.OptClientApi(models.BpmServerUrl+ "startBPM", models);
+        }
+        protected Task<int> StartPs(chooseinput baseModels)
+        {
+            BPMModels models = new BPMModels(configuration)
+            {
+                Action = baseModels.Action,
+
+
+                BPMUser = baseModels.BPMUser,
+                BPMUserPass = baseModels.BPMUserPass,
+                FormDataSet = baseModels.FullName,
+                StepId = baseModels.StepID,
+                Comments = baseModels.Comments
+            };
+            return MyClientApi.OptClientApi(models.BpmServerUrl+ "Approve", models);
+        }
+
+        /// <summary>
+        /// 审批
+        /// </summary>
+        /// <param name="baseModels"></param>
+        /// <returns></returns>
+        protected Task<int> StartAudit (chooseinput baseModels)
+        {
+
+            BPMModels models = new BPMModels(configuration)
+            {
+                Action = baseModels.Action,
+
+
+                BPMUser = baseModels.BPMUser,
+                BPMUserPass = baseModels.BPMUserPass,
+                FormDataSet = baseModels.ProcessName,
+                StepId = baseModels.StepID,
+                Comments = baseModels.Comments
+
+            };
+            return MyClientApi.OptClientApi(models.BpmServerUrl+ "Approve", models);
             return MyClientApi.OptClientApi(models.BpmServerUrl + "StartBPM", models);
         }
             
@@ -220,6 +259,17 @@ namespace Api.Controllers
             };
             return MyClientApi.OptClientApi(models.BpmServerUrl + "RecedeRestart", models);
         }
+        /// <summary>
+        /// 拒绝
+        /// </summary>
+        /// <param name="baseModels"></param>
+        /// <returns></returns>
+        protected Task<int> StartDown(chooseinput baseModels)
+        {
+
+            BPMModels models = new BPMModels(configuration)
+            {
+                Action = baseModels.Action,
 
 
 
