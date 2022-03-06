@@ -20,9 +20,6 @@ namespace IOT_Project_WebAPI.Controllers
         private IConfiguration configuration;
         public FlowController(IConfiguration configuration) : base(configuration)
         {
-
-
-
         }
         //第一周流程
 
@@ -64,8 +61,8 @@ namespace IOT_Project_WebAPI.Controllers
         /// 发起离职审批流程
         /// </summary>
         /// <param name="model"></param>
-        [HttpPost, Route("api/atratleave")]
-        public void atratleave(PlanAll model)
+        [HttpPost, Route("api/atratDep")]
+        public void atratDep(PlanAll model)
         {
             var xml = CollectionToSqlXml<Departure>(model.PlanDate);
             StartProccess(xml, model);
@@ -82,7 +79,7 @@ namespace IOT_Project_WebAPI.Controllers
         //二周流程发起
 
         /// <summary>
-        /// 发起日常表单流程
+        /// 发起接待表单流程
         /// </summary>
         /// <param name="model"></param>
 
@@ -144,6 +141,44 @@ namespace IOT_Project_WebAPI.Controllers
         {
             StartP(baseModels);
         }
+
+        /// <summary>
+        /// 发起离职交接流程
+        /// </summary>
+        /// <param name="leave"></param>
+        [HttpPost, Route("api/StartHandOver")]
+        public void StartHandOver(PlanAll model)
+        {
+            var xml = CollectionToSqlXml<HandOver>(model.PlanDate);
+            StartProccess(xml, model);
+        }
+
+        /// <summary>
+        /// 发起用车申请流程
+        /// </summary>
+        /// <param name="leave"></param>
+        [HttpPost, Route("api/StartCarapply")]
+        public void StartCarapply(PlanAll model)
+        {
+            var xml = CollectionToSqlXml<Carapply>(model.PlanDate);
+            StartProccess(xml, model);
+        }
+
+
+        [HttpPost, Route("api/evertion")]
+        public void evertion(EvetAll daily)
+        {
+            var xml = CollectionToSqlXml<Daily>(daily.Daily);
+            var xmls = CollectionToSqlXml<Dailydetailed>(daily.Dailydetailed);
+            StartProccess(xml + xmls, daily);
+
+
+
+
+
+        }
+
+
 
 
         /// <summary>

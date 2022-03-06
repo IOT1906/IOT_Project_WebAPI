@@ -12,5 +12,7 @@ namespace IOT_Priject_Domin.InputModels
         public string ReceItemDetails { get; set; }
         public string ReceItineraryDetails { get; set; }
         public string Receptionbase { get; set; }
+
+
     }
 }
