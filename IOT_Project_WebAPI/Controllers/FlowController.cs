@@ -4,6 +4,8 @@ using bpmdemoapi.models;
 using IOT_Priject_Domin.InputModel;
 using IOT_Priject_Domin.InputModels;
 using IOT_Priject_Domin.Model;
+using IOT_Priject_Domin.OutPutModel;
+using IOT_Project_MyDB;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -11,6 +13,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApplication1;
+
 namespace IOT_Project_WebAPI.Controllers
 {
 
@@ -18,9 +22,13 @@ namespace IOT_Project_WebAPI.Controllers
     public class FlowController : BaseController
     {
         private IConfiguration configuration;
+        
         public FlowController(IConfiguration configuration) : base(configuration)
         {
         }
+
+
+
         //第一周流程
 
 
@@ -68,7 +76,26 @@ namespace IOT_Project_WebAPI.Controllers
             StartProccess(xml, model);
         }
 
+        
 
+        /// <summary>
+        /// 同意
+        /// </summary>
+        /// <param name="Stp"></param>
+        [HttpPost, Route("api/StepatratDep")]
+        public void StepatratDep(StepModels Stp)
+        {
+            yesProccess(Stp);
+        }
+        /// <summary>
+        /// 拒绝
+        /// </summary>
+        /// <param name="Stp"></param>
+        [HttpPost, Route("api/TaskDep")]
+        public void TaskDep(TaskModel Tasks)
+        {
+            NoProccess(Tasks);
+        }
 
 
 
@@ -89,8 +116,9 @@ namespace IOT_Project_WebAPI.Controllers
             var xml = CollectionToSqlXml<ReceItemDetails>(model.ReceItemDetails);
             var xmls = CollectionToSqlXml<ReceItineraryDetails>(model.ReceItineraryDetails);
             var xmlss = CollectionToSqlXml<Receptionbase>(model.Receptionbase);
-            StartProccess(xml + xmls + xmlss, model);
+            StartProccess(xmlss + xmls +xml , model);
         }
+
         /// <summary>
         /// 固定资产资料借用
         /// </summary>
@@ -146,7 +174,10 @@ namespace IOT_Project_WebAPI.Controllers
             StartProccess(xml, model);
         }
 
-
+        /// <summary>
+        /// 日常用品采购申请单
+        /// </summary>
+        /// <param name="daily"></param>
         [HttpPost, Route("api/evertion")]
         public void evertion(EvetAll daily)
         {

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WebApplication1;
 
 namespace IOT_Project_MyDB
 {
@@ -129,7 +130,11 @@ namespace IOT_Project_MyDB
         /// 用章申请表
         /// </summary>
         public DbSet<Use_seal> Use_seal { get; set; }
-
+        /// <summary>
+        /// 审批表的流程
+        /// </summary>
+        public DbSet<BPMInstTasks> BPMInstTasks { get; set; }
+        public DbSet<BPMInstProcSteps> BPMInstProcSteps { get; set; }
 
     }
 }

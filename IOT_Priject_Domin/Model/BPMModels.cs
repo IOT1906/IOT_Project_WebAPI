@@ -50,5 +50,10 @@ namespace bpmdemoapi.models
         /// </summary>
         public string FormDataSet { get; set; }
         public string BpmServerUrl { get { return configuration.GetSection("bpmServerUrl").Value; } }
+
+        public int TaskId { get; set; }
+
+        public int StepId { get; set; }
+        public string Comments { get; set; }
     }
 }
