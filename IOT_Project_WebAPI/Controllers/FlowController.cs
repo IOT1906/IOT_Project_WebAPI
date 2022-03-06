@@ -20,12 +20,13 @@ namespace IOT_Project_WebAPI.Controllers
         private IConfiguration configuration;
         public FlowController(IConfiguration configuration) : base(configuration)
         {
+
         }
         //第一周流程
 
 
         /// <summary>
-        /// 发起请假流程
+        /// 发起请假流程/
         /// </summary>
         /// <param name="leave"></param>
         [HttpPost, Route("api/startleave")]
@@ -34,6 +35,25 @@ namespace IOT_Project_WebAPI.Controllers
             var xml = CollectionToSqlXml<Leave>(model.PlanDate);
             StartProccess(xml, model);
         }
+        /// <summary>
+        /// 审批流程
+        /// </summary>
+        /// <param name="leave"></param>
+        [HttpPost, Route("api/StartAuitp")]
+        public void StartAuitp(chooseinput baseModels)
+        {
+            StartAudit(baseModels);
+        }
+        ///// <summary>
+        ///// 拒绝流程
+        ///// </summary>
+        ///// <param name="leave"></param>
+        //[HttpPost, Route("api/StartTurn")]
+        //public void StartTurn(chooseinput baseModels)
+        //{
+        //    StartDown(baseModels);
+        //}
+
         /// <summary>
         /// 发起人力资源申请
         /// </summary>resourcesinput
@@ -55,7 +75,6 @@ namespace IOT_Project_WebAPI.Controllers
             var xml1 = CollectionToSqlXml<Expected_increase_this_year>(annual.IOT_Priject_Domininput);
             StartProccess(xml + xml1, annual);
         }
-
 
         /// <summary>
         /// 发起离职审批流程
@@ -101,7 +120,18 @@ namespace IOT_Project_WebAPI.Controllers
             var xml = CollectionToSqlXml<Loanrequest>(oanrequest.loanrequests);
             StartProccess(xml,oanrequest);
         }
-
+        /// <summary>
+        /// 固定资产验收
+        /// </summary>
+        /// <param name="Loanrequest"></param>
+        [HttpPost, Route("api/Assetacceptance")]
+        public void Assetacceptance(AsseAll oanrequest)
+        {
+            var xml = CollectionToSqlXml<Assetacceptance>(oanrequest.Assetacceptance);
+            var xmla = CollectionToSqlXml<AcceptanceDetails>(oanrequest.AcceptanceDetails);
+            var xmlc = CollectionToSqlXml<Acceptanceannex>(oanrequest.Acceptanceannex);
+            StartProccess(xml+xmla+xmlc, oanrequest);
+        }
         /// <summary>
         /// 固定资产购置申请
         /// </summary>
@@ -132,15 +162,15 @@ namespace IOT_Project_WebAPI.Controllers
         {
             StartPs(baseModels);
         }
-        /// <summary>
-        /// 固定资产交接驳回
-        /// </summary>
-        /// <param name="Connect"></param>
-        [HttpPost, Route("api/Connectbh")]
-        public void Connectbh(chooseinput baseModels)
-        {
-            StartP(baseModels);
-        }
+        ///// <summary>
+        ///// 固定资产交接驳回
+        ///// </summary>
+        ///// <param name="Connect"></param>
+        //[HttpPost, Route("api/Connectbh")]
+        //public void Connectbh(chooseinput baseModels)
+        //{
+        //    StartP(baseModels);
+        //}
 
         /// <summary>
         /// 发起离职交接流程
