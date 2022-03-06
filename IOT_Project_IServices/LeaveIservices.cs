@@ -17,6 +17,6 @@ namespace IOT_Project_IServices
         /// </summary>
         /// <param name="mode"></param>
         /// <returns></returns>
-        int Add(Leave mode);
+        int Add(Interview mode);
     }
 }

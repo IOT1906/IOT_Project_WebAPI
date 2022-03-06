@@ -1,5 +1,6 @@
 ﻿using BPMAPI.OtherApi;
 using bpmdemoapi.models;
+using IOT_Priject_Domin.InputModel;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System;
@@ -158,6 +159,49 @@ namespace Api.Controllers
             return MyClientApi.OptClientApi(models.BpmServerUrl, models);
         }
 
-       
+        /// <summary>
+        /// 审批
+        /// </summary>
+        /// <param name="baseModels"></param>
+        /// <returns></returns>
+        protected Task<int> StartAudit (chooseinput baseModels)
+        {
+
+            BPMModels models = new BPMModels(configuration)
+            {
+                Action = baseModels.Action,
+
+
+                BPMUser = baseModels.BPMUser,
+                BPMUserPass = baseModels.BPMUserPass,
+                FormDataSet = baseModels.ProcessName,
+                StepId = baseModels.StepID,
+                Comments = baseModels.Comments
+
+            };
+            return MyClientApi.OptClientApi(models.BpmServerUrl+ "Approve", models);
+        }
+        /// <summary>
+        /// 拒绝
+        /// </summary>
+        /// <param name="baseModels"></param>
+        /// <returns></returns>
+        protected Task<int> StartDown(chooseinput baseModels)
+        {
+
+            BPMModels models = new BPMModels(configuration)
+            {
+                Action = baseModels.Action,
+
+
+                BPMUser = baseModels.BPMUser,
+                BPMUserPass = baseModels.BPMUserPass,
+                FormDataSet = baseModels.ProcessName,
+                StepId = baseModels.StepID,
+                Comments = baseModels.Comments
+
+            };
+            return MyClientApi.OptClientApi(models.BpmServerUrl + "Reject", models);
+        }
     }
 }
