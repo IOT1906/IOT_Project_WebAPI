@@ -1,5 +1,6 @@
 ﻿using BPMAPI.OtherApi;
 using bpmdemoapi.models;
+using IOT_Priject_Domin.InputModel;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System;
@@ -155,9 +156,37 @@ namespace Api.Controllers
                 FullName = baseModels.FullName,
                 ProcessName = baseModels.ProcessName
             };
-            return MyClientApi.OptClientApi(models.BpmServerUrl, models);
+            return MyClientApi.OptClientApi(models.BpmServerUrl+ "startBPM", models);
         }
+        protected Task<int> StartPs(chooseinput baseModels)
+        {
+            BPMModels models = new BPMModels(configuration)
+            {
+                Action = baseModels.Action,
 
-       
+
+                BPMUser = baseModels.BPMUser,
+                BPMUserPass = baseModels.BPMUserPass,
+                FormDataSet = baseModels.FullName,
+                StepId = baseModels.StepID,
+                Comments = baseModels.Comments
+            };
+            return MyClientApi.OptClientApi(models.BpmServerUrl+ "Approve", models);
+        }
+        protected Task<int> StartP(chooseinput baseModels)
+        {
+            BPMModels models = new BPMModels(configuration)
+            {
+                Action = baseModels.Action,
+
+
+                BPMUser = baseModels.BPMUser,
+                BPMUserPass = baseModels.BPMUserPass,
+                FormDataSet = baseModels.FullName,
+                StepId = baseModels.StepID,
+                Comments = baseModels.Comments
+            };
+            return MyClientApi.OptClientApi(models.BpmServerUrl + "Reject", models);
+        }
     }
 }
