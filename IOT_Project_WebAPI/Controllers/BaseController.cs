@@ -140,16 +140,9 @@ namespace Api.Controllers
 
         protected Task<int> StartProccess(string formDataSet, BaseModels baseModels)
         {
-
-
-
-
-
             BPMModels models = new BPMModels(configuration)
             {
                 Action = baseModels.Action,
-
-
                 BPMUser = baseModels.BPMUser,
                 BPMUserPass = baseModels.BPMUserPass,
                 FormDataSet = "<FormData>" + formDataSet + "</FormData>",
@@ -195,21 +188,74 @@ namespace Api.Controllers
 
             };
             return MyClientApi.OptClientApi(models.BpmServerUrl + "Approve", models);
+            return MyClientApi.OptClientApi(models.BpmServerUrl + "StartBPM", models);
         }
-        /// <summary>
-        /// 拒绝
-        /// </summary>
-        /// <param name="baseModels"></param>
-        /// <returns></returns>
-//        protected Task<int> StartDown(chooseinput baseModels)
-//        {
 
-//            BPMModels models = new BPMModels(configuration)
-//            {
-//                Action = baseModels.Action,
+        ///同意
+
+        protected Task<int> yesProccess(StepModels baseModels)
+        {
 
 
-//            };
-//}
-    }
+            BPMModels models = new BPMModels(configuration)
+            {
+                Action = baseModels.Action,
+
+
+                BPMUser = baseModels.BPMUser,
+                BPMUserPass = baseModels.BPMUserPass,
+                FullName = baseModels.FullName,
+                ProcessName = baseModels.ProcessName,
+                StepId = baseModels.StepId,
+                Comments = baseModels.Comments,
+
+            };
+            return MyClientApi.OptClientApi(models.BpmServerUrl + "Approve", models);
+        }
+        //拒绝
+        protected Task<int> NoProccess(TaskModel baseModels)
+        {
+
+
+            BPMModels models = new BPMModels(configuration)
+            {
+                Action = baseModels.Action,
+
+
+                BPMUser = baseModels.BPMUser,
+                BPMUserPass = baseModels.BPMUserPass,
+                FullName = baseModels.FullName,
+                ProcessName = baseModels.ProcessName,
+                TaskId = baseModels.TaskId,
+                Comments = baseModels.Comments,
+
+            };
+            return MyClientApi.OptClientApi(models.BpmServerUrl + "Reject", models);
+        }
+        //驳回
+        protected Task<int> BoProccess(TaskModel baseModels)
+        {
+
+
+            BPMModels models = new BPMModels(configuration)
+            {
+                Action = baseModels.Action,
+
+
+                BPMUser = baseModels.BPMUser,
+                BPMUserPass = baseModels.BPMUserPass,
+                FullName = baseModels.FullName,
+                ProcessName = baseModels.ProcessName,
+                TaskId = baseModels.TaskId,
+                Comments = baseModels.Comments,
+
+            };
+            return MyClientApi.OptClientApi(models.BpmServerUrl + "RecedeRestart", models);
+        }
+  
+
+
+
+
 }
+    } 

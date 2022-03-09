@@ -11,7 +11,7 @@ namespace IOT_Priject_Domin.Model
     /// <summary>
     /// 接待申请表
     /// </summary>
-    public class Receptionbase 
+    public class Receptionbase
     {
         [Key]
         public int ReceId { get; set; }

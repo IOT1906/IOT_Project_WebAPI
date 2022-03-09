@@ -29,4 +29,9 @@
     <ProjectReference Include="..\IOT_Project_Services\IOT_Project_Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="img\" />
+    <Folder Include="wwwroot\img\" />
+  </ItemGroup>
+
 </Project>

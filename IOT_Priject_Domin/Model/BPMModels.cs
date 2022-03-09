@@ -63,5 +63,6 @@ namespace bpmdemoapi.models
         /// 意见
         /// </summary>
         public string Comments { get; set; }
+
     }
 }

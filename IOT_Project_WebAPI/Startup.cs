@@ -46,9 +46,10 @@ namespace IOT_Project_WebAPI
             services.AddScoped<ResourcesRequirementsIServices, ResourcesRequirementsServices>();
             //注入年度计划服务层
             services.AddScoped<Annual_PlanIServices, Annual_PlanServices>();
-            //注入离职计划服务层
-            services.AddScoped<DepartureIServices, DepartureServices>();
-            
+            //注入新增会议服务层
+            services.AddScoped<MeetIServices, MeetServices>();
+
+
             //跨域
             services.AddCors(s =>
             {

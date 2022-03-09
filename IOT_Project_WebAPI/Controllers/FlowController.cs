@@ -4,13 +4,18 @@ using bpmdemoapi.models;
 using IOT_Priject_Domin.InputModel;
 using IOT_Priject_Domin.InputModels;
 using IOT_Priject_Domin.Model;
+using IOT_Project_MyDB;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApplication1;
+
+
 namespace IOT_Project_WebAPI.Controllers
 {
 
@@ -18,10 +23,14 @@ namespace IOT_Project_WebAPI.Controllers
     public class FlowController : BaseController
     {
         private IConfiguration configuration;
+
         public FlowController(IConfiguration configuration) : base(configuration)
         {
 
         }
+
+
+
         //第一周流程
 
 
@@ -75,7 +84,24 @@ namespace IOT_Project_WebAPI.Controllers
             var xml1 = CollectionToSqlXml<Expected_increase_this_year>(annual.IOT_Priject_Domininput);
             StartProccess(xml + xml1, annual);
         }
-
+        /// <summary>
+        /// 审批流程
+        /// </summary>
+        /// <param name="ResourcesRequirements"></param>
+        [HttpPost, Route("api/Startag")]
+        public void Startag(chooseinput annual)
+        {
+            StartAudit(annual);
+        }
+        /// <summary>
+        /// 拒绝流程
+        /// </summary>
+        /// <param name="ResourcesRequirements"></param>
+        [HttpPost, Route("api/StartagNO")]
+        public void StartagNO(TaskModel annual)
+        {
+            NoProccess(annual);
+        }
         /// <summary>
         /// 发起离职审批流程
         /// </summary>
@@ -88,6 +114,25 @@ namespace IOT_Project_WebAPI.Controllers
         }
 
 
+
+        /// <summary>
+        /// 同意
+        /// </summary>
+        /// <param name="Stp"></param>
+        [HttpPost, Route("api/StepatratDep")]
+        public void StepatratDep(StepModels Stp)
+        {
+            yesProccess(Stp);
+        }
+        /// <summary>
+        /// 拒绝
+        /// </summary>
+        /// <param name="Stp"></param>
+        [HttpPost, Route("api/TaskDep")]
+        public void TaskDep(TaskModel Tasks)
+        {
+            NoProccess(Tasks);
+        }
 
 
 
@@ -108,8 +153,9 @@ namespace IOT_Project_WebAPI.Controllers
             var xml = CollectionToSqlXml<ReceItemDetails>(model.ReceItemDetails);
             var xmls = CollectionToSqlXml<ReceItineraryDetails>(model.ReceItineraryDetails);
             var xmlss = CollectionToSqlXml<Receptionbase>(model.Receptionbase);
-            StartProccess(xml + xmls + xmlss, model);
+            StartProccess(xmlss + xmls + xml, model);
         }
+
         /// <summary>
         /// 固定资产资料借用
         /// </summary>
@@ -118,7 +164,7 @@ namespace IOT_Project_WebAPI.Controllers
         public void Loanrequest(Loanrequests oanrequest)
         {
             var xml = CollectionToSqlXml<Loanrequest>(oanrequest.loanrequests);
-            StartProccess(xml,oanrequest);
+            StartProccess(xml, oanrequest);
         }
         /// <summary>
         /// 固定资产验收
@@ -140,7 +186,7 @@ namespace IOT_Project_WebAPI.Controllers
         public void Acquisitionassets(Acquisition_assets cquisitionassets)
         {
             var xml = CollectionToSqlXml<Acquisitionassets>(cquisitionassets.acquisitionassets);
-            StartProccess(xml,cquisitionassets);
+            StartProccess(xml, cquisitionassets);
         }
 
         /// <summary>
@@ -151,7 +197,7 @@ namespace IOT_Project_WebAPI.Controllers
         public void Connect(Connects connect)
         {
             var xml = CollectionToSqlXml<Connect>(connect.connect);
-            StartProccess(xml,connect);
+            StartProccess(xml, connect);
         }
         /// <summary>
         /// 固定资产交接审批
@@ -162,15 +208,15 @@ namespace IOT_Project_WebAPI.Controllers
         {
             StartPs(baseModels);
         }
-        ///// <summary>
-        ///// 固定资产交接驳回
-        ///// </summary>
-        ///// <param name="Connect"></param>
-        //[HttpPost, Route("api/Connectbh")]
-        //public void Connectbh(chooseinput baseModels)
-        //{
-        //    StartP(baseModels);
-        //}
+        /// <summary>
+        /// 固定资产交接驳回
+        /// </summary>
+        /// <param name="Connect"></param>
+        [HttpPost, Route("api/Connectbh")]
+        public void Connectbh(TaskModel baseModels)
+        {
+            BoProccess(baseModels);
+        }
 
         /// <summary>
         /// 发起离职交接流程
@@ -194,7 +240,10 @@ namespace IOT_Project_WebAPI.Controllers
             StartProccess(xml, model);
         }
 
-
+        /// <summary>
+        /// 日常用品采购申请单
+        /// </summary>
+        /// <param name="daily"></param>
         [HttpPost, Route("api/evertion")]
         public void evertion(EvetAll daily)
         {
@@ -232,6 +281,36 @@ namespace IOT_Project_WebAPI.Controllers
             StartProccess(xml, sealinput);
         }
 
+        ////[HttpPost, Route("api/Uptimg")]
+        //public string Uptimg()
+        //{
+        //    var file = HttpContext.Current.Request.Files[0];
+        //    string ss = file.FileName;
+        //    var arr = file.FileName.Substring(ss.IndexOf('.'), ss.Length - ss.IndexOf('.'));
+        //    ss = DateTime.Now.ToString("yyyyMMddhhmmss") + arr;
+        //    file.SaveAs(HttpContext.Current.Server.MapPath("`/img/`") + ss);
+        //    return ss;
+        //}
+        //[HttpPost]
+        //public async Task<IActionResult> PostAsync(List<IFormFile> files)
+        //{
+        //    long size = files.Sum(f => f.Length);
 
-    }
-}
+        //    foreach (var formFile in files)
+        //    {
+        //        var filePath = @"D:\img\" + formFile.FileName;
+
+        //        if (formFile.Length > 0)
+        //        {
+        //            using (var stream = new FileStream(filePath, FileMode.Create))
+        //            {
+        //                await formFile.CopyToAsync(stream);
+        //            }
+        //        }
+        //    }
+
+        //    return Ok(new { count = files.Count, size });
+        //}
+
+    }   
+} 
