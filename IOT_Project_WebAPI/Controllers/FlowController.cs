@@ -4,16 +4,17 @@ using bpmdemoapi.models;
 using IOT_Priject_Domin.InputModel;
 using IOT_Priject_Domin.InputModels;
 using IOT_Priject_Domin.Model;
-using IOT_Priject_Domin.OutPutModel;
 using IOT_Project_MyDB;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApplication1;
+
 
 namespace IOT_Project_WebAPI.Controllers
 {
@@ -22,7 +23,7 @@ namespace IOT_Project_WebAPI.Controllers
     public class FlowController : BaseController
     {
         private IConfiguration configuration;
-        
+
         public FlowController(IConfiguration configuration) : base(configuration)
         {
         }
@@ -89,25 +90,16 @@ namespace IOT_Project_WebAPI.Controllers
         [HttpPost, Route("api/Startag")]
         public void Startag(chooseinput annual)
         {
-            Startstuss(annual);
+            StartAudit(annual);
         }
         /// <summary>
         /// 拒绝流程
         /// </summary>
         /// <param name="ResourcesRequirements"></param>
         [HttpPost, Route("api/StartagNO")]
-        public void StartagNO(chooseinput annual)
+        public void StartagNO(TaskModel annual)
         {
-            NOStarts(annual);
-        }
-        /// <summary>
-        /// 反填流程
-        /// </summary>
-        /// <param name="ResourcesRequirements"></param>
-        [HttpPost, Route("api/Startagupt")]
-        public void Startagupt(chooseinput annual)
-        {
-            Startsfan(annual);
+            NoProccess(annual);
         }
         /// <summary>
         /// 发起离职审批流程
@@ -120,7 +112,7 @@ namespace IOT_Project_WebAPI.Controllers
             StartProccess(xml, model);
         }
 
-        
+
 
         /// <summary>
         /// 同意
@@ -160,7 +152,7 @@ namespace IOT_Project_WebAPI.Controllers
             var xml = CollectionToSqlXml<ReceItemDetails>(model.ReceItemDetails);
             var xmls = CollectionToSqlXml<ReceItineraryDetails>(model.ReceItineraryDetails);
             var xmlss = CollectionToSqlXml<Receptionbase>(model.Receptionbase);
-            StartProccess(xmlss + xmls +xml , model);
+            StartProccess(xmlss + xmls + xml, model);
         }
 
         /// <summary>
@@ -171,7 +163,7 @@ namespace IOT_Project_WebAPI.Controllers
         public void Loanrequest(Loanrequests oanrequest)
         {
             var xml = CollectionToSqlXml<Loanrequest>(oanrequest.loanrequests);
-            StartProccess(xml,oanrequest);
+            StartProccess(xml, oanrequest);
         }
 
         /// <summary>
@@ -182,7 +174,7 @@ namespace IOT_Project_WebAPI.Controllers
         public void Acquisitionassets(Acquisition_assets cquisitionassets)
         {
             var xml = CollectionToSqlXml<Acquisitionassets>(cquisitionassets.acquisitionassets);
-            StartProccess(xml,cquisitionassets);
+            StartProccess(xml, cquisitionassets);
         }
 
         /// <summary>
@@ -193,7 +185,7 @@ namespace IOT_Project_WebAPI.Controllers
         public void Connect(Connects connect)
         {
             var xml = CollectionToSqlXml<Connect>(connect.connect);
-            StartProccess(xml,connect);
+            StartProccess(xml, connect);
         }
         /// <summary>
         /// 固定资产交接审批
@@ -209,9 +201,9 @@ namespace IOT_Project_WebAPI.Controllers
         /// </summary>
         /// <param name="Connect"></param>
         [HttpPost, Route("api/Connectbh")]
-        public void Connectbh(chooseinput baseModels)
+        public void Connectbh(TaskModel baseModels)
         {
-            StartP(baseModels);
+            BoProccess(baseModels);
         }
 
         /// <summary>
@@ -277,6 +269,36 @@ namespace IOT_Project_WebAPI.Controllers
             StartProccess(xml, sealinput);
         }
 
+        ////[HttpPost, Route("api/Uptimg")]
+        //public string Uptimg()
+        //{
+        //    var file = HttpContext.Current.Request.Files[0];
+        //    string ss = file.FileName;
+        //    var arr = file.FileName.Substring(ss.IndexOf('.'), ss.Length - ss.IndexOf('.'));
+        //    ss = DateTime.Now.ToString("yyyyMMddhhmmss") + arr;
+        //    file.SaveAs(HttpContext.Current.Server.MapPath("`/img/`") + ss);
+        //    return ss;
+        //}
+        //[HttpPost]
+        //public async Task<IActionResult> PostAsync(List<IFormFile> files)
+        //{
+        //    long size = files.Sum(f => f.Length);
 
-    }
-}
+        //    foreach (var formFile in files)
+        //    {
+        //        var filePath = @"D:\img\" + formFile.FileName;
+
+        //        if (formFile.Length > 0)
+        //        {
+        //            using (var stream = new FileStream(filePath, FileMode.Create))
+        //            {
+        //                await formFile.CopyToAsync(stream);
+        //            }
+        //        }
+        //    }
+
+        //    return Ok(new { count = files.Count, size });
+        //}
+
+    }   
+} 

@@ -64,9 +64,5 @@ namespace bpmdemoapi.models
         /// </summary>
         public string Comments { get; set; }
 
-        public int TaskId { get; set; }
-
-        public int StepId { get; set; }
-        public string Comments { get; set; }
     }
 }

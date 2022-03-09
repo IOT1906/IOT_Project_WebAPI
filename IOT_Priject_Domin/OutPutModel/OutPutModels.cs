@@ -4,35 +4,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IOT_Priject_Domin.OutPutModel
+namespace IOT__Domain.outPutmodel
 {
-    public class OutPutModels
+    public class outputmodels
     {
+        public int StepID { get; set; }
+        public int TaskID { get; set; }
         /// <summary>
-        /// TaskID
-        /// </summary>
-        public int TaskId { get; set; }
-        /// <summary>
-        /// StepID
-        /// </summary>
-        public int StepId { get; set; }
-
-        /// <summary>
-        /// 表名
+        /// 流程名字
         /// </summary>
         public string ProcessName { get; set; }
         /// <summary>
-        ///审批人
+        /// 判断是否有得审批的流程
         /// </summary>
         public string OwnerAccount { get; set; }
         /// <summary>
-        /// 继续或结束
+        /// 发起人账户
         /// </summary>
-        public string State { get; set; }
+        public string OwnerAccounts { get; set; }
         /// <summary>
-        /// 同意不同意
+        /// 判断流程是否被审批
         /// </summary>
         public string SelAction { get; set; }
-
+        /// <summary>
+        /// 流程单号
+        /// </summary>
+        public string SerialNum { get; set; }
+        /// <summary>
+        /// 流程状态
+        /// </summary>
+        public string State { get; set; }
     }
 }

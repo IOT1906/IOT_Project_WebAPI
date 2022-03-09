@@ -1,4 +1,4 @@
-﻿using IOT_Priject_Domin.OutPutModel;
+﻿using IOT__Domain.outPutmodel;
 using IOT_Project_MyDB;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -29,10 +29,10 @@ namespace IOT_Project_WebAPI.Controllers
             var list = from s in _Sql.BPMInstTasks.ToList()
                        join b in _Sql.BPMInstProcSteps.ToList()
                        on s.TaskID equals b.TaskID
-                       select new OutPutModels
+                       select new outputmodels
                        {
-                           TaskId = s.TaskID,
-                           StepId = b.StepID,
+                           TaskID = s.TaskID,
+                           StepID = b.StepID,
                            OwnerAccount = s.OwnerAccount,
                            ProcessName = s.ProcessName,
                            SelAction = b.SelAction,

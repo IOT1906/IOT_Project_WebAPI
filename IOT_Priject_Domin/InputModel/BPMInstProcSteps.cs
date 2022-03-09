@@ -1,10 +1,11 @@
 namespace WebApplication1
 {
     using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-
+    /// <summary>
+    /// 流程表
+    /// </summary>
     public partial class BPMInstProcSteps
     {
         [Key]
